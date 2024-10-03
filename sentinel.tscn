@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6bom6mu10j0"]
+
+[ext_resource type="Script" path="res://sentinel.gd" id="1_t4o3x"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ags33"]
+radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cw11s"]
+size = Vector3(1, 2, 1)
+
+[node name="Sentinel" type="Node3D"]
+script = ExtResource("1_t4o3x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ags33")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_cw11s")
