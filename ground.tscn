@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://o2jlirgixbal"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0j70x"]
+size = Vector3(42, 1, 50)
+
+[sub_resource type="GDScript" id="GDScript_k705q"]
+script/source = "extends MeshInstance3D
+class_name Ground
+"
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ctivq"]
+data = PackedVector3Array(-21, 0.5, 25, 21, 0.5, 25, -21, -0.5, 25, 21, 0.5, 25, 21, -0.5, 25, -21, -0.5, 25, 21, 0.5, -25, -21, 0.5, -25, 21, -0.5, -25, -21, 0.5, -25, -21, -0.5, -25, 21, -0.5, -25, 21, 0.5, 25, 21, 0.5, -25, 21, -0.5, 25, 21, 0.5, -25, 21, -0.5, -25, 21, -0.5, 25, -21, 0.5, -25, -21, 0.5, 25, -21, -0.5, -25, -21, 0.5, 25, -21, -0.5, 25, -21, -0.5, -25, 21, 0.5, 25, -21, 0.5, 25, 21, 0.5, -25, -21, 0.5, 25, -21, 0.5, -25, 21, 0.5, -25, -21, -0.5, 25, 21, -0.5, 25, -21, -0.5, -25, 21, -0.5, 25, 21, -0.5, -25, -21, -0.5, -25)
+
+[node name="Ground" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_0j70x")
+script = SubResource("GDScript_k705q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ctivq")

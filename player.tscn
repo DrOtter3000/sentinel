@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb70frb4cyw5j"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ks66r"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_ks66r")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="ConstructionCam" type="Node3D" parent="."]
+
+[node name="ConstructionRayCast" type="RayCast3D" parent="ConstructionCam"]
+target_position = Vector3(0, 0, -900)
