@@ -11,7 +11,7 @@ var sentinel_ready_to_build := false
 
 
 func _process(delta: float) -> void:
-	if construction_mode:
+	if construction_mode:			
 		
 		if sentinel_ready_to_build:
 			lbl_status.text = "Add Villager"
