@@ -3,11 +3,51 @@
 [ext_resource type="Script" path="res://player.gd" id="1_ks66r"]
 [ext_resource type="PackedScene" uid="uid://bg6bom6mu10j0" path="res://sentinel.tscn" id="2_4hdur"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" groups=["Player"]]
 script = ExtResource("1_ks66r")
 sentinel_scene = ExtResource("2_4hdur")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="StatusView" type="CanvasLayer" parent="Camera3D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera3D/StatusView"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/StatusView/MarginContainer"]
+layout_mode = 2
+
+[node name="HealthContainer" type="HBoxContainer" parent="Camera3D/StatusView/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LblHealth" type="Label" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/HealthContainer"]
+layout_mode = 2
+text = "Houses left: "
+
+[node name="LblHealthValue" type="Label" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/HealthContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "weird text for testing"
+
+[node name="MoneyContainer" type="HBoxContainer" parent="Camera3D/StatusView/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LblMoney" type="Label" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/MoneyContainer"]
+layout_mode = 2
+text = "Money: "
+
+[node name="LblMoneyValue" type="Label" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/MoneyContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "testtext"
 
 [node name="ConstructionCam" type="Node3D" parent="."]
 

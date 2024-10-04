@@ -115,6 +115,8 @@ shape = SubResource("ConcavePolygonShape3D_3b73l")
 
 [node name="Player" parent="." instance=ExtResource("1_qyam3")]
 transform = Transform3D(1, 0, 0, 0, 0.447759, 0.894154, 0, -0.894154, 0.447759, 0.310709, 29.51, 19.7501)
+money = 100
+construction_mode = true
 
 [node name="LeftPath" type="Path3D" parent="."]
 transform = Transform3D(0.999999, -0.0010226, 0.000181092, 0.00102262, 0.999999, -0.000134541, -0.000180957, 0.000134722, 1, 0, 0.642, 0)
@@ -136,7 +138,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_teudc")
 
 [node name="Zombie" parent="LeftPath" instance=ExtResource("2_j70pt")]
-transform = Transform3D(-0.995589, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937882, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
+transform = Transform3D(-0.995588, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937882, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
 
 [node name="Gate" parent="." instance=ExtResource("3_galsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)

@@ -1,8 +1,18 @@
 extends Node3D
 
-@export var hitpoints := 10
+@export var max_houses := 10
+
+var houses = max_houses
+
+
+func _ready() -> void:
+	update_HUD_health()
 
 
 func take_damage(amount: int) -> void:
-	hitpoints -= amount
-	print(hitpoints)
+	houses -= amount
+	update_HUD_health()
+
+
+func update_HUD_health():
+	get_tree().call_group("Player", "update_lbl_health", houses, max_houses)

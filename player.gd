@@ -3,7 +3,10 @@ extends Node3D
 @onready var construction_ray_cast: RayCast3D = $ConstructionCam/ConstructionRayCast
 @onready var lbl_status: Label = $ConstructionCam/ManagementMenu/LblStatus
 @onready var level = get_tree().get_first_node_in_group("Level")
+@onready var lbl_health_value: Label = %LblHealthValue
+@onready var lbl_money_value: Label = %LblMoneyValue
 
+@export var money := 100
 @export var construction_mode := true
 @export var sentinel_scene: PackedScene
 
@@ -38,8 +41,17 @@ func _process(delta: float) -> void:
 					level.add_child(sentinel)
 					sentinel.global_position = construction_ray_cast.get_collision_point()
 					sentinel_ready_to_build = false
-				
+	
+	update_lbl_money()
 
 
 func _on_btn_recruit_pressed() -> void:
 	sentinel_ready_to_build = true
+
+
+func update_lbl_money() -> void:
+	lbl_money_value.text = str(money)
+
+
+func update_lbl_health(amount: int, maximum: int) -> void:
+	lbl_health_value.text = str(amount) + " / " + str(maximum)
