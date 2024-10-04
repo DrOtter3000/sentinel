@@ -6,6 +6,9 @@ extends Node3D
 
 @export var fire_rate := 6.0
 
+var enemies_in_range := []
+var target = null
+
 
 func _ready() -> void:
 	timer.wait_time = 60 / fire_rate
@@ -14,7 +17,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	compensating_godot_bug_66468()
-
+	if target == null:
+		target = detect_target()
+	else:
+		look_at(target.global_position)
 
 func _on_timer_timeout() -> void:
 	timer.start()
@@ -22,13 +28,27 @@ func _on_timer_timeout() -> void:
 
 func _on_attack_area_body_entered(body: Node3D) -> void:
 	if body.name == "EnemyBody":
-		print("OpenFire")
+		enemies_in_range.append(body.get_parent())
 
 
 func _on_attack_area_body_exited(body: Node3D) -> void:
 	if body.name == "EnemyBody":
-		print("CeaseFire")
+		enemies_in_range.erase(body.get_parent())
+		detect_target()
 
 
 func compensating_godot_bug_66468() -> void:
 	attack_area.set_collision_layer_value(32, not attack_area.get_collision_layer_value(32))
+
+
+func detect_target():
+	if enemies_in_range.size() == 0:
+		target = null
+	var min_distance = 1000
+	var nearest_enemy
+	for enemy in enemies_in_range:
+		var distance_to_sentinel = position.distance_to(enemy.position)
+		if distance_to_sentinel < min_distance:
+			min_distance = distance_to_sentinel
+			nearest_enemy = enemy
+	return nearest_enemy

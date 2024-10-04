@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 		
 		if sentinel_ready_to_build:
 			view_message("Add Villager")
-
 		
 		if Input.is_action_just_pressed("RMB"):
 			sentinel_ready_to_build = false

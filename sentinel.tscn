@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ags33")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428429, 4.93803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428429, -5.26229)
 mesh = SubResource("BoxMesh_irqp6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
