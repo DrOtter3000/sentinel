@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 		var colliding_object = construction_ray_cast.get_collider()
 		
 		if colliding_object == null:
-			print("No construction area")
+			pass
 		elif colliding_object.name == "Ground":
-			print("Can't add sentinel here")
+			pass
 		elif colliding_object.name == "BuildingArea":
 			if sentinel_ready_to_build:
 				if Input.is_action_just_pressed("LMB"):

@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://bc5nenypwbb5a"]
+[gd_scene load_steps=17 format=4 uid="uid://bc5nenypwbb5a"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_6k3mw"]
 [ext_resource type="PackedScene" uid="uid://cb70frb4cyw5j" path="res://player.tscn" id="1_qyam3"]
 [ext_resource type="PackedScene" uid="uid://cmv8mxkywwq7g" path="res://Enemies/zombie.tscn" id="2_j70pt"]
+[ext_resource type="PackedScene" uid="uid://baxnbewckskem" path="res://gate.tscn" id="3_galsx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4j5ui"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -78,6 +80,7 @@ point_count = 12
 albedo_color = Color(0.180825, 0.11478, 0.0215911, 1)
 
 [node name="Level" type="Node3D" groups=["Level"]]
+script = ExtResource("1_6k3mw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q0v6w")
@@ -133,4 +136,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_teudc")
 
 [node name="Zombie" parent="LeftPath" instance=ExtResource("2_j70pt")]
-transform = Transform3D(-0.99559, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937884, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
+transform = Transform3D(-0.995589, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937883, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
+
+[node name="Gate" parent="." instance=ExtResource("3_galsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)

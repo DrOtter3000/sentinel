@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://baxnbewckskem"]
+
+[ext_resource type="Script" path="res://gate.gd" id="1_xwj7a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t2ts"]
+albedo_color = Color(0.482356, 0.249137, 0.140551, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3656n"]
+material = SubResource("StandardMaterial3D_8t2ts")
+size = Vector3(10, 3, 1)
+
+[node name="Gate" type="Node3D"]
+script = ExtResource("1_xwj7a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3656n")
