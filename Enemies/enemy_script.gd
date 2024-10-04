@@ -19,6 +19,6 @@ func calculate_speed():
 
 
 func check_if_in_gate():
-	if progress >= 100:
+	if progress_ratio >= 1.0:
 		get_tree().call_group("Level", "take_damage", damage)
 		queue_free()

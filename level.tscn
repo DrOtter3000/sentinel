@@ -136,7 +136,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_teudc")
 
 [node name="Zombie" parent="LeftPath" instance=ExtResource("2_j70pt")]
-transform = Transform3D(-0.995589, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937883, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
+transform = Transform3D(-0.995589, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937882, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
 
 [node name="Gate" parent="." instance=ExtResource("3_galsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)
