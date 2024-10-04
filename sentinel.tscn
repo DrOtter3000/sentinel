@@ -14,6 +14,7 @@ size = Vector3(1, 2, 1)
 
 [node name="Sentinel" type="Node3D"]
 script = ExtResource("1_t4o3x")
+fire_rate = 60.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,3 +25,8 @@ mesh = SubResource("CapsuleMesh_ags33")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_cw11s")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
