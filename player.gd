@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 			if sentinel_ready_to_build:
 				if Input.is_action_just_pressed("LMB"):
 					var sentinel = sentinel_scene.instantiate()
-					level.add_child(sentinel)
+					get_node("../Sentinels").add_child(sentinel)
 					sentinel.global_position = construction_ray_cast.get_collision_point()
 					sentinel_ready_to_build = false
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmv8mxkywwq7g"]
+[gd_scene load_steps=5 format=3 uid="uid://cmv8mxkywwq7g"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_script.gd" id="1_5wy2a"]
 
@@ -9,7 +9,11 @@ albedo_color = Color(0.921745, 0.0776784, 0.389317, 1)
 material = SubResource("StandardMaterial3D_qjli7")
 radius = 0.3
 
-[node name="Zombie" type="PathFollow3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1m60m"]
+radius = 0.3
+height = 2.04715
+
+[node name="Zombie" type="PathFollow3D" groups=["Enemy"]]
 transform = Transform3D(0.999998, 0, 0, 0, 0.999993, 0, 0, 0, 0.999993, 0, 0, 0)
 loop = false
 script = ExtResource("1_5wy2a")
@@ -17,3 +21,11 @@ script = ExtResource("1_5wy2a")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 6.86668e-11, 0, -2.5193e-10, 1, 1.09139e-11, -7.45058e-09, 1.09139e-11, 1, -0.0007658, 0.762525, 0.000116348)
 mesh = SubResource("CapsuleMesh_kkwi7")
+
+[node name="EnemyBody" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762142, 0)
+shape = SubResource("CapsuleShape3D_1m60m")

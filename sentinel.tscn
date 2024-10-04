@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg6bom6mu10j0"]
+[gd_scene load_steps=8 format=3 uid="uid://bg6bom6mu10j0"]
 
 [ext_resource type="Script" path="res://sentinel.gd" id="1_t4o3x"]
 
@@ -9,16 +9,32 @@ albedo_color = Color(3.94672e-06, 0.672237, 0.787842, 1)
 material = SubResource("StandardMaterial3D_bd7so")
 radius = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3ve4"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_irqp6"]
+material = SubResource("StandardMaterial3D_d3ve4")
+size = Vector3(0.1, 0.1, 10)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_cw11s"]
 size = Vector3(1, 2, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_xbwid"]
+radius = 10.0
+
 [node name="Sentinel" type="Node3D"]
 script = ExtResource("1_t4o3x")
-fire_rate = 60.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_ags33")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428429, 4.93803)
+mesh = SubResource("BoxMesh_irqp6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -26,7 +42,13 @@ mesh = SubResource("CapsuleMesh_ags33")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_cw11s")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_xbwid")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
