@@ -5,7 +5,6 @@
 
 [node name="Player" type="Node3D" groups=["Player"]]
 script = ExtResource("1_ks66r")
-price_per_sentinel = 50
 sentinel_scene = ExtResource("2_4hdur")
 
 [node name="Camera3D" type="Camera3D" parent="."]

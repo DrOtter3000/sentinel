@@ -1,9 +1,18 @@
-[gd_scene load_steps=17 format=4 uid="uid://bc5nenypwbb5a"]
+[gd_scene load_steps=26 format=4 uid="uid://bc5nenypwbb5a"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_6k3mw"]
 [ext_resource type="PackedScene" uid="uid://cb70frb4cyw5j" path="res://player.tscn" id="1_qyam3"]
 [ext_resource type="PackedScene" uid="uid://cmv8mxkywwq7g" path="res://Enemies/zombie.tscn" id="2_j70pt"]
 [ext_resource type="PackedScene" uid="uid://baxnbewckskem" path="res://gate.tscn" id="3_galsx"]
+[ext_resource type="PackedScene" uid="uid://b1018ucjktwx" path="res://Assets/Landscape.glb" id="5_7ey1d"]
+[ext_resource type="PackedScene" uid="uid://c4rxlhba8p4n5" path="res://Assets/Tree1.glb" id="6_7xs0l"]
+[ext_resource type="PackedScene" uid="uid://dlsni2cjwhpli" path="res://Assets/Chapel.glb" id="7_dwx0t"]
+[ext_resource type="PackedScene" uid="uid://8hi7b1wauern" path="res://Assets/Tree2.glb" id="7_j07x7"]
+[ext_resource type="PackedScene" uid="uid://dkg3muylnoob3" path="res://Assets/Gravestone.glb" id="8_afq0i"]
+[ext_resource type="PackedScene" uid="uid://cp0j0n71kt0u7" path="res://Assets/Gravestone2.glb" id="9_kxkv5"]
+[ext_resource type="PackedScene" uid="uid://c0utq0al7t7fb" path="res://Assets/House1.glb" id="10_e85eu"]
+[ext_resource type="PackedScene" uid="uid://ba1vs87ufgdfk" path="res://Assets/House2.glb" id="11_yjnmt"]
+[ext_resource type="PackedScene" uid="uid://b3vfys2lsr6fd" path="res://Assets/House3.glb" id="12_dgemk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4j5ui"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -136,7 +145,79 @@ path_joined = false
 material = SubResource("StandardMaterial3D_teudc")
 
 [node name="Zombie" parent="LeftPath" instance=ExtResource("2_j70pt")]
-transform = Transform3D(-0.995588, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937882, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
+transform = Transform3D(-0.995588, 7.11728e-06, 0.0937879, 0, 0.999993, -7.58865e-05, -0.0937881, -7.5552e-05, -0.995585, -10.9124, 0, -23.8445)
 
 [node name="Gate" parent="." instance=ExtResource("3_galsx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 24)
+
+[node name="Tree12" parent="." instance=ExtResource("6_7xs0l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 24)
+
+[node name="Tree13" parent="." instance=ExtResource("6_7xs0l")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -76, 0, -25)
+
+[node name="Tree14" parent="." instance=ExtResource("6_7xs0l")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 39, 0.4, -25)
+
+[node name="Tree15" parent="." instance=ExtResource("6_7xs0l")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 39, 0.9, 30)
+
+[node name="Tree22" parent="." instance=ExtResource("7_j07x7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 9)
+
+[node name="Tree23" parent="." instance=ExtResource("7_j07x7")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -51, 0, 9)
+
+[node name="Tree24" parent="." instance=ExtResource("7_j07x7")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -51, -4.7, -54)
+
+[node name="Tree25" parent="." instance=ExtResource("7_j07x7")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 3, 2.4, -54)
+
+[node name="Chapel2" parent="." instance=ExtResource("7_dwx0t")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.3, 10, -96)
+
+[node name="Gravestone" parent="." instance=ExtResource("8_afq0i")]
+transform = Transform3D(0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0, 1, 11, 8.3, -83)
+
+[node name="Gravestone22" parent="." instance=ExtResource("9_kxkv5")]
+transform = Transform3D(0.96225, 0.0871557, 0.257834, -0.084186, 0.996195, -0.0225576, -0.258819, 0, 0.965926, 6.3, 8.8, -82)
+
+[node name="House12" parent="." instance=ExtResource("10_e85eu")]
+transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -8, -0.1, 50)
+
+[node name="House15" parent="." instance=ExtResource("10_e85eu")]
+transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, -14, -0.7, 71)
+
+[node name="House13" parent="." instance=ExtResource("10_e85eu")]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 12, -0.9, 86)
+
+[node name="House22" parent="." instance=ExtResource("11_yjnmt")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 15.5, -0.2, 65)
+
+[node name="House25" parent="." instance=ExtResource("11_yjnmt")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -19.7, -2.2, 97)
+
+[node name="House23" parent="." instance=ExtResource("11_yjnmt")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -3.5, -1.2, 89)
+
+[node name="House32" parent="." instance=ExtResource("12_dgemk")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 24, -0.2, 62)
+
+[node name="Landscape3" parent="." instance=ExtResource("5_7ey1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="House14" parent="." instance=ExtResource("10_e85eu")]
+transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -8, -0.1, 50)
+
+[node name="House24" parent="." instance=ExtResource("11_yjnmt")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -43.5, -0.6, 45.5)
+
+[node name="House34" parent="." instance=ExtResource("12_dgemk")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 24, -0.2, 61)
+
+[node name="House33" parent="." instance=ExtResource("12_dgemk")]
+transform = Transform3D(-0.649519, 0, -0.375, 0, 0.75, 0, 0.375, 0, -0.649519, -33, -2.1, 61)
+
+[node name="House35" parent="." instance=ExtResource("12_dgemk")]
+transform = Transform3D(-0.649519, 0, 0.375, 0, 0.75, 0, -0.375, 0, -0.649519, 3, -2.1, 76)
