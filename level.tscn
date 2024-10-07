@@ -124,7 +124,7 @@ shape = SubResource("ConcavePolygonShape3D_3b73l")
 [node name="Sentinels" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_qyam3")]
-transform = Transform3D(1, 0, 0, 0, 0.447759, 0.894154, 0, -0.894154, 0.447759, 0.310709, 29.51, 19.7501)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 20)
 
 [node name="LeftPath" type="Path3D" parent="."]
 transform = Transform3D(0.999999, -0.0010226, 0.000181092, 0.00102262, 0.999999, -0.000134541, -0.000180957, 0.000134722, 1, 0, 0.642, 0)

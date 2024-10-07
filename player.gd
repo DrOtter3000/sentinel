@@ -1,21 +1,27 @@
 extends Node3D
 
-@onready var construction_ray_cast: RayCast3D = $ConstructionCam/ConstructionRayCast
+@onready var construction_ray_cast: RayCast3D = $Camera3D/ConstructionRayCast
 @onready var lbl_status: Label = $ConstructionCam/ManagementMenu/LblStatus
 @onready var level = get_tree().get_first_node_in_group("Level")
 @onready var lbl_health_value: Label = %LblHealthValue
 @onready var lbl_money_value: Label = %LblMoneyValue
+@onready var management_menu: CanvasLayer = $ConstructionCam/ManagementMenu
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var money := 100
 @export var price_per_sentinel := 12
 @export var construction_mode := true
 @export var sentinel_scene: PackedScene
+@export_enum("construction", "combat") var mode
 
 var sentinel_ready_to_build := false
 
 
 func _process(delta: float) -> void:
-	if construction_mode:			
+	if Input.is_action_just_pressed("switch_mode"):
+		switch_mode()
+	
+	if mode == 0:
 		
 		if sentinel_ready_to_build:
 			view_message("Add Villager")
@@ -65,4 +71,15 @@ func update_lbl_health(amount: int, maximum: int) -> void:
 
 func view_message(text: String) -> void:
 	lbl_status.text = text
-	
+
+
+func switch_mode() -> void:
+	if mode == 0:
+		mode = 1
+		animation_player.play("switch_to_combat")
+		management_menu.visible = false
+	else:
+		mode = 0
+		animation_player.play("switch_to_construction")
+		management_menu.visible = true
+	print(mode)
