@@ -2,6 +2,7 @@ extends PathFollow3D
 
 @export var basic_speed := 1.0
 @export var hitpoints := 15
+@export var money := 5
 @export var damage := 1
 
 var speed_modifier := 1.0
@@ -32,4 +33,5 @@ func take_damage(amount: int) -> void:
 
 func check_if_alive() -> void:
 	if hitpoints <= 0:
+		get_tree().call_group("Player", "add_money", money)
 		queue_free() 

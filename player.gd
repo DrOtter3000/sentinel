@@ -66,6 +66,11 @@ func _on_btn_recruit_pressed() -> void:
 		view_message("Insufficient Funds")
 
 
+func add_money(amount: int) -> void:
+	money += amount
+	update_lbl_money()
+
+
 func update_lbl_money() -> void:
 	lbl_money_value.text = str(money)
 
