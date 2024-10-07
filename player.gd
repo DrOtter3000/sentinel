@@ -7,6 +7,7 @@ extends Node3D
 @onready var lbl_money_value: Label = %LblMoneyValue
 @onready var management_menu: CanvasLayer = $ConstructionCam/ManagementMenu
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var combat_menu: CanvasLayer = $CombatCam/CombatMenu
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -15,6 +16,10 @@ extends Node3D
 @export_enum("construction", "combat") var mode
 
 var sentinel_ready_to_build := false
+
+
+func _ready() -> void:
+	switch_mode()
 
 
 func _process(delta: float) -> void:
@@ -78,8 +83,9 @@ func switch_mode() -> void:
 		mode = 1
 		animation_player.play("switch_to_combat")
 		management_menu.visible = false
+		combat_menu.visible = true
 	else:
 		mode = 0
 		animation_player.play("switch_to_construction")
 		management_menu.visible = true
-	print(mode)
+		combat_menu.visible = false
