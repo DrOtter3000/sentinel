@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 	else:
 		look_at(target.global_position)
 		if timer.is_stopped():
-			shoot()
 			timer.start()
 
 
