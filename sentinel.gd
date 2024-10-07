@@ -3,8 +3,8 @@ extends Node3D
 @onready var timer: Timer = $Timer
 @onready var attack_area: Area3D = $AttackArea
 
-
-@export var fire_rate := 6.0
+@export var damage := 10
+@export var fire_rate := 12.0
 
 var enemies_in_range := []
 var target = null
@@ -12,17 +12,26 @@ var target = null
 
 func _ready() -> void:
 	timer.wait_time = 60 / fire_rate
-	timer.start()
 
 
 func _process(delta: float) -> void:
 	compensating_godot_bug_66468()
 	if target == null:
 		target = detect_target()
+		timer.stop()
 	else:
 		look_at(target.global_position)
+		if timer.is_stopped():
+			shoot()
+			timer.start()
+
+
+func shoot() -> void:
+	target.take_damage(damage)
+
 
 func _on_timer_timeout() -> void:
+	shoot()
 	timer.start()
 
 

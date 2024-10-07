@@ -26,7 +26,6 @@ radius = 10.0
 script = ExtResource("1_t4o3x")
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

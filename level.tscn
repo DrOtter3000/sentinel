@@ -191,8 +191,14 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 [node name="Gravestone" parent="Landscape_Village_Graveyard" instance=ExtResource("8_afq0i")]
 transform = Transform3D(0.492404, 0.086824, -0.866025, -0.173648, 0.984808, 0, 0.852869, 0.150384, 0.5, 29.2032, 7.3, -43.4186)
 
+[node name="Gravestone2" parent="Landscape_Village_Graveyard" instance=ExtResource("8_afq0i")]
+transform = Transform3D(0.511204, 0.106234, -0.852869, 0.0858319, 0.98106, 0.173648, 0.855163, -0.161973, 0.492404, 22.3731, 7.2, -45.2487)
+
 [node name="Gravestone22" parent="Landscape_Village_Graveyard" instance=ExtResource("9_kxkv5")]
 transform = Transform3D(0.705269, 0.0435779, -0.707599, -0.084186, 0.996195, -0.0225576, 0.703923, 0.075479, 0.706254, 25.9872, 7.8, -46.9889)
+
+[node name="Gravestone23" parent="Landscape_Village_Graveyard" instance=ExtResource("9_kxkv5")]
+transform = Transform3D(0.165028, 0.340221, -0.925752, -0.252721, 0.921871, 0.293744, 0.953361, 0.185481, 0.238115, 26.0231, 6.1, -38.9267)
 
 [node name="House12" parent="Landscape_Village_Graveyard" instance=ExtResource("10_e85eu")]
 transform = Transform3D(0.996194, 0, -0.0871553, 0, 1, 0, 0.0871553, 0, 0.996194, -95.4782, -1.1, 6.62694)
