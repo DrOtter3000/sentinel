@@ -9,6 +9,7 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var combat_menu: CanvasLayer = $CombatCam/CombatMenu
 @onready var camera_3d: Camera3D = $Camera3D
+@onready var btn_recruit: Button = $ConstructionCam/ManagementMenu/MarginContainer/VBoxContainer/RecruitingMenu/BtnRecruit
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -22,6 +23,7 @@ var sentinel_ready_to_build := false
 
 func _ready() -> void:
 	switch_mode()
+	btn_recruit.text = "Recruit Villager (" + str(price_per_sentinel) + ")"
 
 
 func _process(delta: float) -> void:
