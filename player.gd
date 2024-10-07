@@ -8,9 +8,11 @@ extends Node3D
 @onready var management_menu: CanvasLayer = $ConstructionCam/ManagementMenu
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var combat_menu: CanvasLayer = $CombatCam/CombatMenu
+@onready var camera_3d: Camera3D = $Camera3D
 
 @export var money := 100
 @export var price_per_sentinel := 12
+@export var mouse_sensetivity := .15
 @export var construction_mode := true
 @export var sentinel_scene: PackedScene
 @export_enum("construction", "combat") var mode
@@ -56,7 +58,17 @@ func _process(delta: float) -> void:
 					view_message("")
 					sentinel_ready_to_build = false
 	
+	if mode == 1:
+		pass
+	
 	update_lbl_money()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and mode == 1:
+		camera_3d.rotation_degrees.y -= event.relative.x * mouse_sensetivity
+		camera_3d.rotation_degrees.x -= event.relative.y * mouse_sensetivity
+		camera_3d.rotation_degrees.x = clamp(camera_3d.rotation_degrees.x, -60, 90)
 
 
 func _on_btn_recruit_pressed() -> void:
@@ -86,11 +98,13 @@ func view_message(text: String) -> void:
 func switch_mode() -> void:
 	if mode == 0:
 		mode = 1
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		animation_player.play("switch_to_combat")
 		management_menu.visible = false
 		combat_menu.visible = true
 	else:
 		mode = 0
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		animation_player.play("switch_to_construction")
 		management_menu.visible = true
 		combat_menu.visible = false
