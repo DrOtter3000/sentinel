@@ -10,12 +10,14 @@ extends Node3D
 @onready var combat_menu: CanvasLayer = $CombatCam/CombatMenu
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var btn_recruit: Button = $ConstructionCam/ManagementMenu/MarginContainer/VBoxContainer/RecruitingMenu/BtnRecruit
+@onready var cast_spawn_point = camera_3d.global_position
 
 @export var money := 100
 @export var price_per_sentinel := 12
 @export var mouse_sensetivity := .15
 @export var construction_mode := true
 @export var sentinel_scene: PackedScene
+@export var fireball_scene: PackedScene
 @export_enum("construction", "combat") var mode
 
 var sentinel_ready_to_build := false
@@ -61,8 +63,12 @@ func _process(delta: float) -> void:
 					sentinel_ready_to_build = false
 	
 	if mode == 1:
-		pass
-	
+		if Input.is_action_just_pressed("LMB"):
+			var fireball = fireball_scene.instantiate() as Node3D
+			get_tree().get_first_node_in_group("Level").add_child(fireball)
+			fireball.transform = camera_3d.global_transform
+			fireball.linear_velocity = camera_3d.global_transform.basis.z * -1 * 10
+			
 	update_lbl_money()
 
 

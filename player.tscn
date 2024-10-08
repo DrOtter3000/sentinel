@@ -1,7 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb70frb4cyw5j"]
+[gd_scene load_steps=8 format=3 uid="uid://cb70frb4cyw5j"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ks66r"]
 [ext_resource type="PackedScene" uid="uid://bg6bom6mu10j0" path="res://sentinel.tscn" id="2_4hdur"]
+[ext_resource type="PackedScene" uid="uid://bqh6b726abcrl" path="res://Casts/fireball.tscn" id="3_seuyh"]
+
+[sub_resource type="Animation" id="Animation_bnbbe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hdfu0"]
 resource_name = "switch_to_combat"
@@ -57,33 +85,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-1.11701, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_bnbbe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ujumr"]
 _data = {
 "RESET": SubResource("Animation_bnbbe"),
@@ -94,6 +95,7 @@ _data = {
 [node name="Player" type="Node3D" groups=["Player"]]
 script = ExtResource("1_ks66r")
 sentinel_scene = ExtResource("2_4hdur")
+fireball_scene = ExtResource("3_seuyh")
 mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="."]
