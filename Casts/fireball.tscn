@@ -1,32 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqh6b726abcrl"]
 
 [ext_resource type="Script" path="res://Casts/fireball.gd" id="1_bvfnh"]
+[ext_resource type="PackedScene" uid="uid://c0184i8kiphg1" path="res://Casts/explosion.tscn" id="2_qhkgv"]
+[ext_resource type="SphereMesh" uid="uid://qqsd37gqmp1b" path="res://Materials/fireball.tres" id="3_q7txv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4rki"]
 radius = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofagq"]
-albedo_color = Color(0.733333, 0.219608, 0.121569, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_tew8h"]
-material = SubResource("StandardMaterial3D_ofagq")
-radius = 0.25
-height = 0.5
-
 [node name="Fireball" type="RigidBody3D"]
 gravity_scale = 0.0
 script = ExtResource("1_bvfnh")
+explosion = ExtResource("2_qhkgv")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_g4rki")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_tew8h")
+mesh = ExtResource("3_q7txv")
 
 [node name="SelfDestruction" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
