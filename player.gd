@@ -9,12 +9,15 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var combat_menu: CanvasLayer = $CombatCam/CombatMenu
 @onready var camera_3d: Camera3D = $Camera3D
-@onready var btn_recruit: Button = $ConstructionCam/ManagementMenu/MarginContainer/VBoxContainer/RecruitingMenu/BtnRecruit
 @onready var cast_spawn_point = camera_3d.global_position
 @onready var mana_regen_timer: Timer = $ManaRegenTimer
 @onready var mana_bar: ProgressBar = $Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer/ManaBar
 @onready var lbl_mana: Label = $Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer/LblMana
-
+@onready var btn_recruit: Button = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/BuildContainer/BtnRecruit
+@onready var build_container: VBoxContainer = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/BuildContainer
+@onready var upgrade_container: VBoxContainer = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer
+@onready var lbl_damage: Label = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/LblDamage
+@onready var btn_upgrade_damage: Button = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/BtnUpgradeDamage
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -28,7 +31,8 @@ extends Node3D
 @export var fireball_scene: PackedScene
 
 var sentinel_ready_to_build := false
-
+var build_mode = true
+var selected_sentinel
 
 func _ready() -> void:
 	switch_mode()
@@ -40,11 +44,19 @@ func _process(delta: float) -> void:
 		switch_mode()
 	
 	if mode == 0:
+		if build_mode == true:
+			build_container.visible = true
+			upgrade_container.visible = false
+		else:
+			build_container.visible = false
+			upgrade_container.visible = true
 		
 		if sentinel_ready_to_build:
 			view_message("Add Villager")
 		
 		if Input.is_action_just_pressed("RMB"):
+			selected_sentinel = null
+			build_mode = true
 			sentinel_ready_to_build = false
 			view_message("")
 		
@@ -58,6 +70,15 @@ func _process(delta: float) -> void:
 			pass
 		elif colliding_object.name == "Ground":
 			pass
+		elif colliding_object.name == "Sentinel":
+			var hovered_sentinel = colliding_object.get_parent()
+			if not sentinel_ready_to_build:
+				if Input.is_action_just_pressed("LMB"):
+					selected_sentinel = hovered_sentinel
+					build_mode = false
+					lbl_damage.text = "Damage: " + str(selected_sentinel.damage)
+					btn_upgrade_damage.text = "Damage +5 (10Gold)"
+					
 		elif colliding_object.name == "BuildingArea":
 			if sentinel_ready_to_build:
 				if Input.is_action_just_pressed("LMB"):
@@ -120,6 +141,8 @@ func view_message(text: String) -> void:
 
 func switch_mode() -> void:
 	if mode == 0:
+		sentinel_ready_to_build = false
+		view_message("")
 		mode = 1
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		animation_player.play("switch_to_combat")
@@ -127,6 +150,7 @@ func switch_mode() -> void:
 		combat_menu.visible = true
 	else:
 		mode = 0
+		build_mode = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		animation_player.play("switch_to_construction")
 		management_menu.visible = true
@@ -137,4 +161,12 @@ func _on_mana_regen_timer_timeout() -> void:
 	update_mana_HUD()
 	mana += mana_regen / 60
 	mana = min(mana, max_mana)
-	
+
+
+func _on_btn_upgrade_damage_pressed() -> void:
+	if selected_sentinel:
+		if money >= 10:
+			selected_sentinel.damage += 5
+			money -= 10
+			lbl_damage.text = "Damage: " + str(selected_sentinel.damage)
+			update_lbl_money()

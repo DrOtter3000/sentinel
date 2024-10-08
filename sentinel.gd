@@ -2,9 +2,11 @@ extends Node3D
 
 @onready var timer: Timer = $Timer
 @onready var attack_area: Area3D = $AttackArea
+@onready var collision_shape_3d: CollisionShape3D = $AttackArea/CollisionShape3D
 
 @export var damage := 10
 @export var fire_rate := 12.0
+@export var radius := 10.0
 
 var enemies_in_range := []
 var target = null
@@ -12,6 +14,7 @@ var target = null
 
 func _ready() -> void:
 	timer.wait_time = 60 / fire_rate
+	collision_shape_3d.shape.radius = radius
 
 
 func _process(delta: float) -> void:
