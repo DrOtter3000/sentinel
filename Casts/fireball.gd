@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+@export var mana_cost := 1.0
 @export var explosion: PackedScene
 
 var exploding := false

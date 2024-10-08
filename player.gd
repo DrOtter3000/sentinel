@@ -11,22 +11,29 @@ extends Node3D
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var btn_recruit: Button = $ConstructionCam/ManagementMenu/MarginContainer/VBoxContainer/RecruitingMenu/BtnRecruit
 @onready var cast_spawn_point = camera_3d.global_position
+@onready var mana_regen_timer: Timer = $ManaRegenTimer
+@onready var mana_bar: ProgressBar = $Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer/ManaBar
+@onready var lbl_mana: Label = $Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer/LblMana
+
 
 @export var money := 100
 @export var price_per_sentinel := 12
+@export var max_mana := 10.0
+@export var mana_regen := 1.0
 @export var mouse_sensetivity := .15
+@export var mana := 5.0
 @export var construction_mode := true
+@export_enum("construction", "combat") var mode
 @export var sentinel_scene: PackedScene
 @export var fireball_scene: PackedScene
-@export_enum("construction", "combat") var mode
 
 var sentinel_ready_to_build := false
 
 
 func _ready() -> void:
 	switch_mode()
+	mana = max_mana
 	btn_recruit.text = "Recruit Villager (" + str(price_per_sentinel) + ")"
-
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_mode"):
@@ -64,10 +71,12 @@ func _process(delta: float) -> void:
 	
 	if mode == 1:
 		if Input.is_action_just_pressed("LMB"):
-			var fireball = fireball_scene.instantiate() as Node3D
-			get_tree().get_first_node_in_group("Level").add_child(fireball)
-			fireball.transform = camera_3d.global_transform
-			fireball.linear_velocity = camera_3d.global_transform.basis.z * -1 * 10
+			if mana >= Gamestate.fireball_mana_cost:
+				mana -= Gamestate.fireball_mana_cost
+				var fireball = fireball_scene.instantiate() as Node3D
+				get_tree().get_first_node_in_group("Level").add_child(fireball)
+				fireball.transform = camera_3d.global_transform
+				fireball.linear_velocity = camera_3d.global_transform.basis.z * -1 * 10
 			
 	update_lbl_money()
 
@@ -99,6 +108,12 @@ func update_lbl_health(amount: int, maximum: int) -> void:
 	lbl_health_value.text = str(amount) + " / " + str(maximum)
 
 
+func update_mana_HUD():
+	mana_bar.max_value = max_mana
+	mana_bar.value = mana
+	lbl_mana.text = "Mana: " + str("%.1f" % mana) + " / " + str(max_mana) 
+
+
 func view_message(text: String) -> void:
 	lbl_status.text = text
 
@@ -116,3 +131,10 @@ func switch_mode() -> void:
 		animation_player.play("switch_to_construction")
 		management_menu.visible = true
 		combat_menu.visible = false
+
+
+func _on_mana_regen_timer_timeout() -> void:
+	update_mana_HUD()
+	mana += mana_regen / 60
+	mana = min(mana, max_mana)
+	

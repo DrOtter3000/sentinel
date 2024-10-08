@@ -94,20 +94,18 @@ _data = {
 
 [node name="Player" type="Node3D" groups=["Player"]]
 script = ExtResource("1_ks66r")
+mode = 0
 sentinel_scene = ExtResource("2_4hdur")
 fireball_scene = ExtResource("3_seuyh")
-mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
 [node name="StatusView" type="CanvasLayer" parent="Camera3D"]
 
 [node name="MarginContainer" type="MarginContainer" parent="Camera3D/StatusView"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 283.0
+offset_bottom = 128.0
+size_flags_horizontal = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -139,6 +137,20 @@ text = "Money: "
 unique_name_in_owner = true
 layout_mode = 2
 text = "testtext"
+
+[node name="ManaContainer" type="VBoxContainer" parent="Camera3D/StatusView/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="ManaBar" type="ProgressBar" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+show_percentage = false
+
+[node name="LblMana" type="Label" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer"]
+layout_mode = 2
+text = "manatext"
+horizontal_alignment = 1
 
 [node name="ConstructionRayCast" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -900)
@@ -249,4 +261,9 @@ libraries = {
 "": SubResource("AnimationLibrary_ujumr")
 }
 
+[node name="ManaRegenTimer" type="Timer" parent="."]
+wait_time = 0.016
+autostart = true
+
 [connection signal="pressed" from="ConstructionCam/ManagementMenu/MarginContainer/VBoxContainer/RecruitingMenu/BtnRecruit" to="." method="_on_btn_recruit_pressed"]
+[connection signal="timeout" from="ManaRegenTimer" to="." method="_on_mana_regen_timer_timeout"]
