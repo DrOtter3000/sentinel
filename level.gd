@@ -20,6 +20,7 @@ func _ready() -> void:
 func take_damage(amount: int) -> void:
 	houses -= amount
 	update_HUD_health()
+	check_for_game_over()
 
 
 func update_HUD_health() -> void:
@@ -60,3 +61,8 @@ func check_for_victory() -> void:
 	
 	if all_zombies_killed:
 		print("winner")
+
+
+func check_for_game_over() -> void:
+	if houses <= 0:
+		print("game over")
