@@ -18,6 +18,8 @@ extends Node3D
 @onready var upgrade_container: VBoxContainer = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer
 @onready var lbl_damage: Label = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/LblDamage
 @onready var btn_upgrade_damage: Button = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/BtnUpgradeDamage
+@onready var btn_sell: Button = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/BtnSell
+@onready var price_per_sentinel_sold = int(price_per_sentinel * 0.75)
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -29,7 +31,6 @@ extends Node3D
 @export_enum("construction", "combat") var mode
 @export var sentinel_scene: PackedScene
 @export var fireball_scene: PackedScene
-
 var sentinel_ready_to_build := false
 var build_mode = true
 var selected_sentinel
@@ -38,7 +39,7 @@ func _ready() -> void:
 	switch_mode()
 	mana = max_mana
 	btn_recruit.text = "Recruit Villager (" + str(price_per_sentinel) + ")"
-
+	btn_sell.text = "Sell Villager (" + str(price_per_sentinel_sold) + ")"
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_mode"):
 		switch_mode()
@@ -55,10 +56,7 @@ func _process(delta: float) -> void:
 			view_message("Add Villager")
 		
 		if Input.is_action_just_pressed("RMB"):
-			selected_sentinel = null
-			build_mode = true
-			sentinel_ready_to_build = false
-			view_message("")
+			reset_selections()
 		
 		var mouse_position: Vector2 = get_viewport().get_mouse_position()
 		construction_ray_cast.target_position = $Camera3D.project_local_ray_normal(mouse_position) * 1000.0
@@ -135,6 +133,13 @@ func update_mana_HUD():
 	lbl_mana.text = "Mana: " + str("%.1f" % mana) + " / " + str(max_mana) 
 
 
+func reset_selections():
+	selected_sentinel = null
+	build_mode = true
+	sentinel_ready_to_build = false
+	view_message("")
+
+
 func view_message(text: String) -> void:
 	lbl_status.text = text
 
@@ -170,3 +175,9 @@ func _on_btn_upgrade_damage_pressed() -> void:
 			money -= 10
 			lbl_damage.text = "Damage: " + str(selected_sentinel.damage)
 			update_lbl_money()
+
+
+func _on_btn_sell_pressed() -> void:
+	money += price_per_sentinel_sold
+	selected_sentinel.queue_free()
+	reset_selections()
