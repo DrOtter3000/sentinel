@@ -17,6 +17,7 @@ height = 2.04715
 transform = Transform3D(0.999998, 0, 0, 0, 0.999993, 0, 0, 0, 0.999993, 0, 0, 0)
 loop = false
 script = ExtResource("1_5wy2a")
+type = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 6.86668e-11, 0, -2.5193e-10, 1, 1.09139e-11, -7.45058e-09, 1.09139e-11, 1, -0.0007658, 0.762525, 0.000116348)
