@@ -17,8 +17,12 @@
 [ext_resource type="Material" uid="uid://b6ygji8pngyqa" path="res://Materials/Light.tres" id="15_dgbhw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4j5ui"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.103543, 0.129416, 0.326791, 1)
+sky_horizon_color = Color(0.203334, 0.185733, 0.282895, 1)
+sky_curve = 0.332871
+sky_energy_multiplier = 0.75
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_btcko"]
 sky_material = SubResource("ProceduralSkyMaterial_4j5ui")
@@ -26,7 +30,6 @@ sky_material = SubResource("ProceduralSkyMaterial_4j5ui")
 [sub_resource type="Environment" id="Environment_q0v6w"]
 background_mode = 2
 sky = SubResource("Sky_btcko")
-tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mth02"]
 albedo_color = Color(0.280397, 0.150779, 0.0314696, 1)
@@ -128,6 +131,7 @@ environment = SubResource("Environment_q0v6w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.288102, 0.385018, 0.611861, 1)
 shadow_enabled = true
 
 [node name="Area" type="Node3D" parent="."]
