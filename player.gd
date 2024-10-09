@@ -35,6 +35,7 @@ var sentinel_ready_to_build := false
 var build_mode = true
 var selected_sentinel
 
+
 func _ready() -> void:
 	switch_mode()
 	mana = max_mana
@@ -127,13 +128,13 @@ func update_lbl_health(amount: int, maximum: int) -> void:
 	lbl_health_value.text = str(amount) + " / " + str(maximum)
 
 
-func update_mana_HUD():
+func update_mana_HUD() -> void:
 	mana_bar.max_value = max_mana
 	mana_bar.value = mana
 	lbl_mana.text = "Mana: " + str("%.1f" % mana) + " / " + str(max_mana) 
 
 
-func reset_selections():
+func reset_selections() -> void:
 	selected_sentinel = null
 	build_mode = true
 	sentinel_ready_to_build = false

@@ -16,11 +16,11 @@ func _process(delta: float) -> void:
 	progress += delta * speed
 
 
-func calculate_speed():
+func calculate_speed() -> void:
 	speed = basic_speed * speed_modifier * speed_status
 
 
-func check_if_in_gate():
+func check_if_in_gate() -> void:
 	if progress_ratio >= 1.0:
 		get_tree().call_group("Level", "take_damage", damage)
 		queue_free()

@@ -14,5 +14,5 @@ func take_damage(amount: int) -> void:
 	update_HUD_health()
 
 
-func update_HUD_health():
+func update_HUD_health() -> void:
 	get_tree().call_group("Player", "update_lbl_health", houses, max_houses)

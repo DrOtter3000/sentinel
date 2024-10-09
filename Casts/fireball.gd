@@ -17,7 +17,7 @@ func _on_self_destruction_timeout() -> void:
 	explode()
 
 
-func explode():
+func explode() -> void:
 	exploding = true
 	var explosion_instance = explosion.instantiate()
 	get_parent().add_child(explosion_instance)
