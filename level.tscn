@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bc5nenypwbb5a"]
+[gd_scene load_steps=34 format=4 uid="uid://bc5nenypwbb5a"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_6k3mw"]
 [ext_resource type="PackedScene" uid="uid://cb70frb4cyw5j" path="res://player.tscn" id="1_qyam3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c0utq0al7t7fb" path="res://Assets/House1.glb" id="10_e85eu"]
 [ext_resource type="PackedScene" uid="uid://ba1vs87ufgdfk" path="res://Assets/House2.glb" id="11_yjnmt"]
 [ext_resource type="PackedScene" uid="uid://b3vfys2lsr6fd" path="res://Assets/House3.glb" id="12_dgemk"]
+[ext_resource type="Material" uid="uid://b6ygji8pngyqa" path="res://Materials/Light.tres" id="15_dgbhw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4j5ui"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -104,15 +105,19 @@ _data = {
 point_count = 14
 
 [sub_resource type="BoxMesh" id="BoxMesh_bcxma"]
+material = ExtResource("15_dgbhw")
 size = Vector3(5.8, 2, 3.8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ksn04"]
+material = ExtResource("15_dgbhw")
 size = Vector3(5.8, 2, 2.6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l8cbu"]
+material = ExtResource("15_dgbhw")
 size = Vector3(2, 2, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8hhsv"]
+material = ExtResource("15_dgbhw")
 size = Vector3(4.4, 1.8, 2.8)
 
 [node name="Level" type="Node3D" groups=["Level"]]

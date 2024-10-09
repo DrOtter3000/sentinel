@@ -4,6 +4,7 @@ extends Node3D
 @onready var left_path: Path3D = $LeftPath
 @onready var mid_path: Path3D = $MidPath
 @onready var right_path: Path3D = $RightPath
+@onready var lights_in_the_village: Node3D = $LightsInTheVillage
 
 var houses = max_houses
 var wave := 2
@@ -13,14 +14,24 @@ var zombies_killed_in_wave := 0
 
 
 func _ready() -> void:
+	randomize()
 	update_HUD_health()
 	next_wave()
 
 
 func take_damage(amount: int) -> void:
 	houses -= amount
+	for i in amount:
+		turn_off_light()
 	update_HUD_health()
 	check_for_game_over()
+
+
+func turn_off_light() -> void:
+	var children = lights_in_the_village.get_children()
+	if children.size() == 0:
+		return
+	children[randi() % children.size()].queue_free()
 
 
 func update_HUD_health() -> void:
