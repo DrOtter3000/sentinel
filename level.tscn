@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bc5nenypwbb5a"]
+[gd_scene load_steps=33 format=4 uid="uid://bc5nenypwbb5a"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_6k3mw"]
 [ext_resource type="PackedScene" uid="uid://cb70frb4cyw5j" path="res://player.tscn" id="1_qyam3"]
@@ -102,6 +102,18 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 14
+
+[sub_resource type="BoxMesh" id="BoxMesh_bcxma"]
+size = Vector3(5.8, 2, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ksn04"]
+size = Vector3(5.8, 2, 2.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8cbu"]
+size = Vector3(2, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8hhsv"]
+size = Vector3(4.4, 1.8, 2.8)
 
 [node name="Level" type="Node3D" groups=["Level"]]
 script = ExtResource("1_6k3mw")
@@ -301,6 +313,64 @@ transform = Transform3D(-0.649519, 0, 0.375, 0, 0.75, 0, -0.375, 0, -0.649519, -
 
 [node name="House35" parent="Landscape_Village_Graveyard" instance=ExtResource("12_dgemk")]
 transform = Transform3D(-2.98023e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -2.98023e-08, -112.495, -2.8, 29.1532)
+
+[node name="LightsInTheVillage" type="Node3D" parent="."]
+
+[node name="Light_type_a" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(0.56416, 0, 0.825665, 0, 1, 0, -0.825665, 0, 0.56416, -13.9467, 0.266234, 68.6065)
+mesh = SubResource("BoxMesh_bcxma")
+
+[node name="Light_type_a2" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(0.820421, 0, -0.571759, 0, 1, 0, 0.571759, 0, 0.820421, -8.04601, 0.658499, 50.0513)
+mesh = SubResource("BoxMesh_bcxma")
+
+[node name="Light_type_a3" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(0.7633, 0, 0.646044, 0, 1, 0, -0.646044, 0, 0.7633, 12.0018, 0.222518, 86.0448)
+mesh = SubResource("BoxMesh_bcxma")
+
+[node name="Light_type_b" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(0.709423, 0, -0.704783, 0, 1, 0, 0.704783, 0, 0.709423, 15.555, 0.53947, 65.0062)
+mesh = SubResource("BoxMesh_ksn04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LightsInTheVillage/Light_type_b"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89431, 0.277728, 1.16592)
+mesh = SubResource("BoxMesh_l8cbu")
+
+[node name="Light_type_b2" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -3.54408, -0.357857, 89.075)
+mesh = SubResource("BoxMesh_ksn04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LightsInTheVillage/Light_type_b2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89431, 0.277728, 1.16592)
+mesh = SubResource("BoxMesh_l8cbu")
+
+[node name="Light_type_b3" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(0.999994, 0, -0.00336843, 0, 1, 0, 0.00336843, 0, 0.999994, 1.25995, 0.430126, 96.9347)
+mesh = SubResource("BoxMesh_ksn04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LightsInTheVillage/Light_type_b3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89431, 0.277728, 1.16592)
+mesh = SubResource("BoxMesh_l8cbu")
+
+[node name="Light_type_b4" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(-0.706712, 0, 0.707501, 0, 1, 0, -0.707501, 0, -0.706712, -43.5032, -0.0102363, 45.5288)
+mesh = SubResource("BoxMesh_ksn04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LightsInTheVillage/Light_type_b4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89431, 0.277728, 1.16592)
+mesh = SubResource("BoxMesh_l8cbu")
+
+[node name="Light_type_c" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(0.511548, 0, 0.859255, 0, 1, 0, -0.859255, 0, 0.511548, 2.92994, -0.663949, 75.9998)
+mesh = SubResource("BoxMesh_8hhsv")
+
+[node name="Light_type_c2" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(-0.00767935, 0, 0.99997, 0, 1, 0, -0.99997, 0, -0.00767935, 24.0554, 1.23285, 62.0165)
+mesh = SubResource("BoxMesh_8hhsv")
+
+[node name="Light_type_c3" type="MeshInstance3D" parent="LightsInTheVillage"]
+transform = Transform3D(-0.480576, 0, 0.876953, 0, 1, 0, -0.876953, 0, -0.480576, -33.0151, -0.938673, 61.0344)
+mesh = SubResource("BoxMesh_8hhsv")
 
 [connection signal="timeout" from="LeftPath/PathTimer" to="LeftPath" method="_on_path_timer_timeout"]
 [connection signal="timeout" from="MidPath/PathTimer" to="MidPath" method="_on_path_timer_timeout"]
