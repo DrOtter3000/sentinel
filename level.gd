@@ -36,10 +36,10 @@ func start_wave() -> void:
 		left_path.start_new_wave(10)
 		right_path.start_new_wave(10)
 	elif wave == 3:
-		zombies_in_wave = 3
-		left_path.start_new_wave(1)
-		mid_path.start_new_wave(1)
-		right_path.start_new_wave(1)
+		zombies_in_wave = 30
+		left_path.start_new_wave(10)
+		mid_path.start_new_wave(10)
+		right_path.start_new_wave(10)
 
 
 func next_wave() -> void:
