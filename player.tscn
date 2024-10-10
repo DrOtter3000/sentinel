@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb70frb4cyw5j"]
+[gd_scene load_steps=10 format=3 uid="uid://cb70frb4cyw5j"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ks66r"]
 [ext_resource type="PackedScene" uid="uid://bg6bom6mu10j0" path="res://sentinel.tscn" id="2_4hdur"]
 [ext_resource type="PackedScene" uid="uid://bqh6b726abcrl" path="res://Casts/fireball.tscn" id="3_seuyh"]
+[ext_resource type="PackedScene" uid="uid://bgewkb101u6bu" path="res://Perks/perk_card.tscn" id="4_1pkfx"]
 [ext_resource type="Script" path="res://crosshair.gd" id="4_g2dbb"]
 
 [sub_resource type="Animation" id="Animation_bnbbe"]
@@ -98,6 +99,37 @@ script = ExtResource("1_ks66r")
 mode = 0
 sentinel_scene = ExtResource("2_4hdur")
 fireball_scene = ExtResource("3_seuyh")
+perk_card_scene = ExtResource("4_1pkfx")
+
+[node name="PerkLayer" type="CanvasLayer" parent="."]
+process_mode = 4
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PerkLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LblPerks" type="Label" parent="PerkLayer/VBoxContainer"]
+layout_mode = 2
+text = "Select A Perk"
+horizontal_alignment = 1
+
+[node name="PerkContainer" type="HBoxContainer" parent="PerkLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PerkLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.262745)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
@@ -274,9 +306,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Crosshair" type="Control" parent="CombatCam/CombatMenu/CrosshairContainer"]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("4_g2dbb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

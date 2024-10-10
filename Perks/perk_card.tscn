@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgewkb101u6bu"]
+
+[ext_resource type="Script" path="res://Perks/perk_card.gd" id="1_pda03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x72v"]
+size = Vector2(200, 280)
+
+[node name="PerkCard" type="Control" groups=["PerkCard"]]
+process_mode = 3
+custom_minimum_size = Vector2(200, 280)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -440.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pda03")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="LblTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+
+[node name="LblDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetuer adipiscing "
+autowrap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(100, 140)
+shape = SubResource("RectangleShape2D_7x72v")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

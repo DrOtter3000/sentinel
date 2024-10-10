@@ -20,6 +20,9 @@ extends Node3D
 @onready var btn_upgrade_damage: Button = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/BtnUpgradeDamage
 @onready var btn_sell: Button = $ConstructionCam/ManagementMenu/MarginContainer/ConstructionContainer/UpgradeContainer/BtnSell
 @onready var price_per_sentinel_sold = int(price_per_sentinel * 0.75)
+@onready var perk_layer: CanvasLayer = $PerkLayer
+@onready var perk_container: HBoxContainer = $PerkLayer/VBoxContainer/PerkContainer
+@onready var crosshair: Control = $CombatCam/CombatMenu/CrosshairContainer/Crosshair
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -31,6 +34,8 @@ extends Node3D
 @export_enum("construction", "combat") var mode
 @export var sentinel_scene: PackedScene
 @export var fireball_scene: PackedScene
+@export var perk_card_scene: PackedScene
+
 var sentinel_ready_to_build := false
 var build_mode = true
 var selected_sentinel
@@ -41,6 +46,8 @@ func _ready() -> void:
 	mana = max_mana
 	btn_recruit.text = "Recruit Villager (" + str(price_per_sentinel) + ")"
 	btn_sell.text = "Sell Villager (" + str(price_per_sentinel_sold) + ")"
+
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_mode"):
 		switch_mode()
@@ -108,11 +115,26 @@ func _input(event: InputEvent) -> void:
 		camera_3d.rotation_degrees.x = clamp(camera_3d.rotation_degrees.x, -60, 90)
 
 
-func _on_btn_recruit_pressed() -> void:
-	if money >= price_per_sentinel:
-		sentinel_ready_to_build = true
-	else:
-		view_message("Insufficient Funds")
+func offer_perks():
+	var mouse_mode = Input.mouse_mode
+	var perks = Gamestate.select_perks()
+	crosshair.visible = false
+	perk_layer.visible = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	for perk in perks:
+		var perk_card = perk_card_scene.instantiate()
+		perk_container.add_child(perk_card)
+		perk_card.setup_card(perk)
+
+
+func next_wave():
+	for i in perk_container.get_children():
+		i.queue_free()
+	perk_layer.visible = false
+	crosshair.visible = true
+	if mode == 1:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func add_money(amount: int) -> void:
@@ -182,3 +204,10 @@ func _on_btn_sell_pressed() -> void:
 	money += price_per_sentinel_sold
 	selected_sentinel.queue_free()
 	reset_selections()
+
+
+func _on_btn_recruit_pressed() -> void:
+	if money >= price_per_sentinel:
+		sentinel_ready_to_build = true
+	else:
+		view_message("Insufficient Funds")

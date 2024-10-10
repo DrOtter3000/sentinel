@@ -7,19 +7,24 @@ extends Node3D
 @onready var lights_in_the_village: Node3D = $LightsInTheVillage
 
 var houses = max_houses
-var wave := 2
+var wave := 1
 var zombies_in_wave := 0
 var zombies_killed_in_wave := 0
-
+var zombies_in_village := 0
 
 
 func _ready() -> void:
 	randomize()
+	Gamestate.initialize_perks()
 	update_HUD_health()
-	next_wave()
+	start_wave()
 
 
 func take_damage(amount: int) -> void:
+	zombies_in_village += 1
+	check_for_victory()
+	print(zombies_in_village)
+	print(zombies_killed_in_wave)
 	houses -= amount
 	for i in amount:
 		turn_off_light()
@@ -56,6 +61,8 @@ func start_wave() -> void:
 
 func next_wave() -> void:
 	wave += 1
+	zombies_in_village = 0
+	zombies_killed_in_wave = 0
 	start_wave()
 
 
@@ -67,11 +74,11 @@ func update_kills(type: int) -> void:
 
 func check_for_victory() -> void:
 	var all_zombies_killed := false
-	if zombies_in_wave == zombies_killed_in_wave:
+	if zombies_in_wave == zombies_killed_in_wave + zombies_in_village:
 		all_zombies_killed = true
 	
 	if all_zombies_killed:
-		print("winner")
+		get_tree().get_first_node_in_group("Player").offer_perks()
 
 
 func check_for_game_over() -> void:
