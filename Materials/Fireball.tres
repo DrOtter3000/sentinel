@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://fdc6bga11qhq"]
+
+[resource]
+albedo_color = Color(0.768627, 0.235294, 0, 1)
+emission_enabled = true
+emission = Color(0.768627, 0.235294, 0, 1)
+rim_enabled = true
+ao_light_affect = 1.0
+backlight = Color(0.768627, 0.235294, 0, 1)
