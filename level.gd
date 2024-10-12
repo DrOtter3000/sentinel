@@ -9,8 +9,7 @@ extends Node3D
 var houses = max_houses
 var wave := 1
 var zombies_in_wave := 0
-var zombies_killed_in_wave := 0
-var zombies_in_village := 0
+var zombies_removed_from_wave := 0
 
 
 func _ready() -> void:
@@ -21,10 +20,9 @@ func _ready() -> void:
 
 
 func take_damage(amount: int) -> void:
-	zombies_in_village += 1
+	zombies_removed_from_wave += 1
 	check_for_victory()
-	print(zombies_in_village)
-	print(zombies_killed_in_wave)
+	print(zombies_removed_from_wave)
 	houses -= amount
 	for i in amount:
 		turn_off_light()
@@ -61,23 +59,19 @@ func start_wave() -> void:
 
 func next_wave() -> void:
 	wave += 1
-	zombies_in_village = 0
-	zombies_killed_in_wave = 0
+	zombies_removed_from_wave = 0
 	start_wave()
 
 
 func update_kills(type: int) -> void:
 	if type == 0:
-		zombies_killed_in_wave += 1
+		zombies_removed_from_wave += 1
 	check_for_victory()
 
 
 func check_for_victory() -> void:
-	var all_zombies_killed := false
-	if zombies_in_wave == zombies_killed_in_wave + zombies_in_village:
-		all_zombies_killed = true
-	
-	if all_zombies_killed:
+	if zombies_in_wave == zombies_removed_from_wave:
+		print("winner")
 		get_tree().get_first_node_in_group("Player").offer_perks()
 
 

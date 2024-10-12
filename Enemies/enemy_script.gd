@@ -9,6 +9,7 @@ extends PathFollow3D
 var speed_modifier := 1.0
 var speed_status := 1.0
 var final_speed := 0.0
+var alive := true
 
 
 func _process(delta: float) -> void:
@@ -33,7 +34,8 @@ func take_damage(amount: int) -> void:
 
 
 func check_if_alive() -> void:
-	if hitpoints <= 0:
+	if hitpoints <= 0 and alive:
+		alive = false
 		get_tree().call_group("Player", "add_money", money)
 		get_tree().call_group("Level", "update_kills", type)
 		queue_free() 
