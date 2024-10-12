@@ -3,9 +3,10 @@ extends Node
 var fireball_mana_cost := 1.0
 
 var available_player_perks := {
-			"More Mana": [0, "+10% Mana", 0],
+			#"More Mana": [0, "+10% Mana", 0],
 			"Increase Interest": [0, "Increases interest by 3%", 0],
-			"Fireball Damage": [0, "Increases fireball damage by 25%", 0]
+			"Fireball Damage": [0, "Increases fireball damage by 25%", 0],
+			"Fireball Radius": [5, "Increases fireball radius by 50%", 0]
 		}
 
 var player_perks = available_player_perks.duplicate()
