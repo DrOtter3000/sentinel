@@ -58,6 +58,7 @@ func start_wave() -> void:
 
 
 func next_wave() -> void:
+	Gamestate.upgrade_enemy_perks()
 	wave += 1
 	zombies_removed_from_wave = 0
 	start_wave()

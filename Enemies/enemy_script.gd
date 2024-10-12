@@ -1,15 +1,20 @@
 extends PathFollow3D
 
-@export var hitpoints := 15
+@export var base_hitpoints := 15
 @export var money := 5
 @export var damage := 1
 @export var speed := 1.0
 @export_enum("Zombie") var type
 
-var speed_modifier := 1.0
+var speed_modifier := 1.0 + float(Gamestate.enemy_perks["Faster"][0]/10)
 var speed_status := 1.0
 var final_speed := 0.0
 var alive := true
+var hitpoints: int
+
+
+func _ready() -> void:
+	hitpoints = int(float(base_hitpoints) * (1.0 + float(Gamestate.enemy_perks["Health"][0] * .2)))
 
 
 func _process(delta: float) -> void:
