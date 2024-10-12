@@ -4,8 +4,14 @@ extends Area3D
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 
 @export var max_radius := 1.0
-@export var damage := 7
-@export var growth_rate := .015
+@export var base_damage := 6
+@export var growth_rate := .03
+
+var damage = base_damage
+
+
+func _ready() -> void:
+	damage = int(base_damage * (1.0 + (Gamestate.player_perks["Fireball Damage"][0] * .25)))
 
 
 func _process(delta: float) -> void:
