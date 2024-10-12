@@ -1,6 +1,7 @@
 extends Node
 
-var fireball_mana_cost := 1.0
+var fireball_mana_cost = 1.0
+var victory = true
 
 var available_player_perks := {
 			"More Mana": [0, "Increases Mana by 10%", 0],
@@ -11,7 +12,7 @@ var available_player_perks := {
 
 var available_enemy_perks := {
 			"Health": [0, "Enemies now have additional 20% health"],
-			"Faster": [0, "Enemies are now 10% faster"]
+			"Faster": [100, "Enemies are now 10% faster"]
 		}
 
 var player_perks = available_player_perks.duplicate()
@@ -22,11 +23,14 @@ var enemy_perks = available_enemy_perks.duplicate()
 
 
 func _ready() -> void:
-	initialize_perks()
+	reset_gamestate()
 
 
-func initialize_perks():
+func reset_gamestate() -> void:
 	available_perk_keys = player_perks.keys()
+	player_perks = available_player_perks.duplicate()
+	enemy_perks = available_enemy_perks.duplicate()
+	victory = true
 
 
 func select_perks():

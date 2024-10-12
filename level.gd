@@ -14,7 +14,7 @@ var zombies_removed_from_wave := 0
 
 func _ready() -> void:
 	randomize()
-	Gamestate.initialize_perks()
+	Gamestate.reset_gamestate()
 	update_HUD_health()
 	start_wave()
 
@@ -22,7 +22,6 @@ func _ready() -> void:
 func take_damage(amount: int) -> void:
 	zombies_removed_from_wave += 1
 	check_for_victory()
-	print(zombies_removed_from_wave)
 	houses -= amount
 	for i in amount:
 		turn_off_light()
@@ -55,6 +54,8 @@ func start_wave() -> void:
 		left_path.start_new_wave(10)
 		mid_path.start_new_wave(10)
 		right_path.start_new_wave(10)
+	else:
+		pass
 
 
 func next_wave() -> void:
@@ -72,10 +73,10 @@ func update_kills(type: int) -> void:
 
 func check_for_victory() -> void:
 	if zombies_in_wave == zombies_removed_from_wave:
-		print("winner")
 		get_tree().get_first_node_in_group("Player").offer_perks()
 
 
 func check_for_game_over() -> void:
 	if houses <= 0:
-		print("game over")
+		Gamestate.victory = false
+		get_tree().change_scene_to_file("res://Menus/end_screen.tscn")

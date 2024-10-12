@@ -155,7 +155,7 @@ func update_lbl_money() -> void:
 
 func update_lbl_health(amount: int, maximum: int) -> void:
 	lbl_health_value.text = str(amount) + " / " + str(maximum)
-
+ 
 
 func update_mana_HUD() -> void:
 	mana_bar.max_value = max_mana
