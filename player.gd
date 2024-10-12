@@ -26,10 +26,10 @@ extends Node3D
 
 @export var money := 100
 @export var price_per_sentinel := 12
-@export var max_mana := 10.0
+@export var base_mana := 10.0
 @export var mana_regen := 1.0
 @export var mouse_sensetivity := .15
-@export var mana := 5.0
+@export var mana := 0.0
 @export var construction_mode := true
 @export_enum("construction", "combat") var mode
 @export var sentinel_scene: PackedScene
@@ -39,11 +39,12 @@ extends Node3D
 var sentinel_ready_to_build := false
 var build_mode = true
 var selected_sentinel
+var max_mana = base_mana
 
 
 func _ready() -> void:
 	switch_mode()
-	mana = max_mana
+	mana = base_mana
 	btn_recruit.text = "Recruit Villager (" + str(price_per_sentinel) + ")"
 	btn_sell.text = "Sell Villager (" + str(price_per_sentinel_sold) + ")"
 
@@ -211,3 +212,10 @@ func _on_btn_recruit_pressed() -> void:
 		sentinel_ready_to_build = true
 	else:
 		view_message("Insufficient Funds")
+
+
+func upgrade_perks():
+	print("max_mana:" + str(max_mana))
+	max_mana = base_mana * (1.0 + (float(Gamestate.player_perks["More Mana"][0])/10))
+	mana = max_mana
+	print("max_mana:" + str(max_mana))

@@ -26,6 +26,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("LMB"):
 			Gamestate.apply_perk(perk_key)
 			get_tree().paused = false
+			get_tree().call_group("PerksUpgradeable", "upgrade_perks")
 			get_tree().get_first_node_in_group("Player").next_wave()
 			get_tree().get_first_node_in_group("Level").next_wave()
 			Gamestate.selected_perks = []

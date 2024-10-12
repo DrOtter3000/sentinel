@@ -94,7 +94,7 @@ _data = {
 "switch_to_construction": SubResource("Animation_13arl")
 }
 
-[node name="Player" type="Node3D" groups=["Player"]]
+[node name="Player" type="Node3D" groups=["PerksUpgradeable", "Player"]]
 script = ExtResource("1_ks66r")
 mode = 0
 sentinel_scene = ExtResource("2_4hdur")
