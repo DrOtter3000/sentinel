@@ -23,6 +23,7 @@ extends Node3D
 @onready var perk_layer: CanvasLayer = $PerkLayer
 @onready var perk_container: HBoxContainer = $PerkLayer/VBoxContainer/PerkContainer
 @onready var crosshair: Control = $CombatCam/CombatMenu/CrosshairContainer/Crosshair
+@onready var lbl_interest: Label = $Camera3D/StatusView/MarginContainer/VBoxContainer/MoneyContainer/LblInterest
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -31,6 +32,8 @@ extends Node3D
 @export var mouse_sensetivity := .15
 @export var mana := 0.0
 @export var construction_mode := true
+@export var base_interest := .03
+@export var interest_increase := .03
 @export_enum("construction", "combat") var mode
 @export var sentinel_scene: PackedScene
 @export var fireball_scene: PackedScene
@@ -40,9 +43,11 @@ var sentinel_ready_to_build := false
 var build_mode = true
 var selected_sentinel
 var max_mana = base_mana
+var interest = base_interest
 
 
 func _ready() -> void:
+	update_lbl_money()
 	switch_mode()
 	mana = base_mana
 	btn_recruit.text = "Recruit Villager (" + str(price_per_sentinel) + ")"
@@ -145,6 +150,7 @@ func add_money(amount: int) -> void:
 
 func update_lbl_money() -> void:
 	lbl_money_value.text = str(money)
+	lbl_interest.text = "Interest: " + str(int(interest * 100)) + "%"
 
 
 func update_lbl_health(amount: int, maximum: int) -> void:
@@ -215,7 +221,13 @@ func _on_btn_recruit_pressed() -> void:
 
 
 func upgrade_perks():
-	print("max_mana:" + str(max_mana))
 	max_mana = base_mana * (1.0 + (float(Gamestate.player_perks["More Mana"][0])/10))
 	mana = max_mana
-	print("max_mana:" + str(max_mana))
+	
+	interest = base_interest + float(Gamestate.player_perks["Increase Interest"][0]*interest_increase)
+	payout_interest()
+	update_lbl_money()
+
+
+func payout_interest():
+	money *= 1.0 + interest

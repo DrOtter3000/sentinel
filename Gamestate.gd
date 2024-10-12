@@ -4,8 +4,8 @@ var fireball_mana_cost := 1.0
 
 var available_player_perks := {
 			"More Mana": [0, "+10% Mana", 0],
-			"text_perk_1": [1, "Lorem", 1],
-			"text_perk_2": [0, "Ipsum", 1]
+			"Increase Interest": [0, "Increases interest by 3%", 0],
+			"text_perk_2": [0, "Ipsum", 0]
 		}
 
 var player_perks = available_player_perks.duplicate()
