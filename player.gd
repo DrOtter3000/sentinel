@@ -4,7 +4,6 @@ extends Node3D
 @onready var lbl_status: Label = $ConstructionCam/ManagementMenu/LblStatus
 @onready var level = get_tree().get_first_node_in_group("Level")
 @onready var lbl_health_value: Label = %LblHealthValue
-@onready var lbl_money_value: Label = %LblMoneyValue
 @onready var management_menu: CanvasLayer = $ConstructionCam/ManagementMenu
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var combat_menu: CanvasLayer = $CombatCam/CombatMenu
@@ -23,7 +22,8 @@ extends Node3D
 @onready var perk_layer: CanvasLayer = $PerkLayer
 @onready var perk_container: HBoxContainer = $PerkLayer/VBoxContainer/PerkContainer
 @onready var crosshair: Control = $CombatCam/CombatMenu/CrosshairContainer/Crosshair
-@onready var lbl_interest: Label = $Camera3D/StatusView/MarginContainer/VBoxContainer/MoneyContainer/LblInterest
+@onready var lbl_money_value: Label = %LblMoneyValue
+@onready var lbl_interest: Label = $Camera3D/StatusView/MarginContainer/VBoxContainer/MoneyContainer/VBoxContainer/LblInterest
 
 @export var money := 100
 @export var price_per_sentinel := 12
@@ -149,7 +149,7 @@ func add_money(amount: int) -> void:
 
 
 func update_lbl_money() -> void:
-	lbl_money_value.text = str(money)
+	lbl_money_value.text = "Gold: " + str(money)
 	lbl_interest.text = "Interest: " + str(int(interest * 100)) + "%"
 
 
