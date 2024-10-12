@@ -4,11 +4,11 @@ extends Control
 @onready var lbl_content: Label = $CenterContainer/VBoxContainer/LblContent
 
 
-
 func _ready() -> void:
+	get_tree().paused = false
+	update_screen()
 	reset_game()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	update_screen()
 
 
 func update_screen() -> void:
@@ -29,4 +29,4 @@ func _on_btn_again_pressed() -> void:
 
 
 func _on_btn_quit_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Menus/main_menu.tscn")

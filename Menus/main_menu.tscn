@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4x07608wak4q"]
+
+[ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_gdbc5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gdbc5")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LblTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sentinel"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BtnStart" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Play Game"
+
+[node name="BtnHowToPlay" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+disabled = true
+text = "How To Play"
+
+[node name="BtnCredits" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+disabled = true
+text = "Credits"
+
+[node name="BtnQuit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "Quit"
+
+[node name="LblVersion" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Version: 0.0.0"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnStart" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnHowToPlay" to="." method="_on_btn_how_to_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnCredits" to="." method="_on_btn_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]

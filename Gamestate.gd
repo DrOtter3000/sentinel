@@ -27,10 +27,10 @@ func _ready() -> void:
 
 
 func reset_gamestate() -> void:
-	available_perk_keys = player_perks.keys()
+	victory = true
 	player_perks = available_player_perks.duplicate()
 	enemy_perks = available_enemy_perks.duplicate()
-	victory = true
+	available_perk_keys = player_perks.keys()
 
 
 func select_perks():

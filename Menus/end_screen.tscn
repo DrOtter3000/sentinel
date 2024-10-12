@@ -21,6 +21,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="LblStatus" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -30,9 +31,11 @@ horizontal_alignment = 1
 [node name="LblContent" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "The Villagers survived this night."
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="BtnAgain" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
