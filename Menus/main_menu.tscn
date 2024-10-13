@@ -87,6 +87,7 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HowToPlay/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="LblText" type="Label" parent="HowToPlay/HBoxContainer/VBoxContainer"]
@@ -143,6 +144,10 @@ Sounds:
 J8054
 IENBA
 Dark Fantasy Studios
+
+Animations:
+Mixamo
+DrOtter3000
 
 Catering:
 DrOtter3000
