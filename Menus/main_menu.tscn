@@ -91,7 +91,8 @@ alignment = 1
 
 [node name="LblText" type="Label" parent="HowToPlay/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "LMB = cast fireball
+text = "LMB = select/cast fireball
+RMB = deselect
 SPACE = switch mode
 ALT + F4 = quit"
 
