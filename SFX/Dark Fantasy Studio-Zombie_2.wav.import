@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0t8elu4xv73d"
+path="res://.godot/imported/Dark Fantasy Studio-Zombie_2.wav-235663f5b0267f6b743fedefef2efdd2.sample"
+
+[deps]
+
+source_file="res://SFX/Dark Fantasy Studio-Zombie_2.wav"
+dest_files=["res://.godot/imported/Dark Fantasy Studio-Zombie_2.wav-235663f5b0267f6b743fedefef2efdd2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
