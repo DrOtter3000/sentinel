@@ -5,6 +5,8 @@ extends PathFollow3D
 @export var damage := 1
 @export var speed := 1.0
 @export_enum("Zombie") var type
+@export var death_sound_scene: PackedScene
+
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var timer: Timer = $Timer
 
@@ -46,6 +48,12 @@ func take_damage(amount: int) -> void:
 func check_if_alive() -> void:
 	if hitpoints <= 0 and alive:
 		alive = false
+		
+		var death_sound = death_sound_scene.instantiate()
+		get_parent().add_child(death_sound)
+		death_sound.global_position = global_position
+		
+		
 		get_tree().call_group("Player", "add_money", money)
 		get_tree().call_group("Level", "update_kills", type)
 		queue_free() 

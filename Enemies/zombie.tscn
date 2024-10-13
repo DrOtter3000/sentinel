@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmv8mxkywwq7g"]
+[gd_scene load_steps=5 format=3 uid="uid://cmv8mxkywwq7g"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_script.gd" id="1_5wy2a"]
+[ext_resource type="PackedScene" uid="uid://n2bqpb4xcho4" path="res://Effects/zombie_death_sound.tscn" id="2_41k3s"]
 [ext_resource type="PackedScene" uid="uid://lkfjfwbqc5j3" path="res://Enemies/Zombie.fbx" id="2_863pa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1m60m"]
@@ -12,6 +13,7 @@ transform = Transform3D(0.999998, 0, 0, 0, 0.999993, 0, 0, 0, 0.999993, 0, 0, 0)
 loop = false
 script = ExtResource("1_5wy2a")
 type = 0
+death_sound_scene = ExtResource("2_41k3s")
 
 [node name="Zombie" parent="." instance=ExtResource("2_863pa")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
