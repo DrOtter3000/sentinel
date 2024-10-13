@@ -6,7 +6,7 @@ var victory = true
 var available_player_perks := {
 			"More Mana": [0, "Increases Mana by 10%", 0],
 			"Increase Interest": [0, "Increases interest by 3%", 0],
-			"Fireball Damage": [0, "Increases fireball damage by 25%", 0],
+			"Fireball Damage": [0, "Increases fireball damage by 30%", 0],
 			"Fireball Radius": [0, "Increases fireball radius by 50%", 0]
 		}
 

@@ -2,8 +2,14 @@ extends RigidBody3D
 
 @export var mana_cost := 1.0
 @export var explosion: PackedScene
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var exploding := false
+
+
+func _ready() -> void:
+	audio_stream_player.pitch_scale = randf_range(.9, 1.1)
+	audio_stream_player.play()
 
 
 func _physics_process(delta: float) -> void:

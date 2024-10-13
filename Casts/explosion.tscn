@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0184i8kiphg1"]
+[gd_scene load_steps=6 format=3 uid="uid://c0184i8kiphg1"]
 
 [ext_resource type="Script" path="res://Casts/explosion.gd" id="1_p74nq"]
 [ext_resource type="Material" uid="uid://fdc6bga11qhq" path="res://Materials/Fireball.tres" id="2_pyb3m"]
+[ext_resource type="AudioStream" uid="uid://fejgyheaj10n" path="res://SFX/Dark Fantasy Studio- FireSpell_explode.wav" id="3_y17ax"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_apvhg"]
 resource_local_to_scene = true
@@ -23,5 +24,10 @@ shape = SubResource("SphereShape3D_apvhg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_dbq1j")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_y17ax")
+volume_db = 3.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

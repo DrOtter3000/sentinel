@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqh6b726abcrl"]
+[gd_scene load_steps=7 format=3 uid="uid://bqh6b726abcrl"]
 
 [ext_resource type="Script" path="res://Casts/fireball.gd" id="1_bvfnh"]
 [ext_resource type="PackedScene" uid="uid://c0184i8kiphg1" path="res://Casts/explosion.tscn" id="2_qhkgv"]
 [ext_resource type="Material" uid="uid://fdc6bga11qhq" path="res://Materials/Fireball.tres" id="3_lpq0h"]
+[ext_resource type="AudioStream" uid="uid://dlyfvvas6qud3" path="res://SFX/FireSpell_cast.wav" id="4_neweh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4rki"]
 radius = 0.25
@@ -28,8 +29,13 @@ shape = SubResource("SphereShape3D_g4rki")
 mesh = SubResource("SphereMesh_2idj6")
 
 [node name="SelfDestruction" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_neweh")
+volume_db = -4.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="SelfDestruction" to="." method="_on_self_destruction_timeout"]
