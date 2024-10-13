@@ -5,6 +5,7 @@ extends Node3D
 @onready var mid_path: Path3D = $MidPath
 @onready var right_path: Path3D = $RightPath
 @onready var lights_in_the_village: Node3D = $LightsInTheVillage
+@onready var sfx_panic: AudioStreamPlayer3D = $SFX_Panic
 
 var houses = max_houses
 var wave := 1
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func take_damage(amount: int) -> void:
 	zombies_removed_from_wave += 1
+	sfx_panic.play()
 	check_for_victory()
 	houses -= amount
 	for i in amount:

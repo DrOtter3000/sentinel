@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bc5nenypwbb5a"]
+[gd_scene load_steps=35 format=4 uid="uid://bc5nenypwbb5a"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_6k3mw"]
 [ext_resource type="PackedScene" uid="uid://cb70frb4cyw5j" path="res://player.tscn" id="1_qyam3"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ba1vs87ufgdfk" path="res://Assets/House2.glb" id="11_yjnmt"]
 [ext_resource type="PackedScene" uid="uid://b3vfys2lsr6fd" path="res://Assets/House3.glb" id="12_dgemk"]
 [ext_resource type="Material" uid="uid://b6ygji8pngyqa" path="res://Materials/Light.tres" id="15_dgbhw"]
+[ext_resource type="AudioStream" uid="uid://dg040oibvu5d3" path="res://SFX/CrowdPanic.ogg" id="16_pr2ae"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4j5ui"]
 sky_top_color = Color(0.103543, 0.129416, 0.326791, 1)
@@ -381,6 +382,12 @@ mesh = SubResource("BoxMesh_8hhsv")
 [node name="Light_type_c3" type="MeshInstance3D" parent="LightsInTheVillage"]
 transform = Transform3D(-0.480576, 0, 0.876953, 0, 1, 0, -0.876953, 0, -0.480576, -33.0151, -0.938673, 61.0344)
 mesh = SubResource("BoxMesh_8hhsv")
+
+[node name="SFX_Panic" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54945, 46.7393)
+stream = ExtResource("16_pr2ae")
+volume_db = 10.0
+bus = &"SFX"
 
 [connection signal="timeout" from="LeftPath/PathTimer" to="LeftPath" method="_on_path_timer_timeout"]
 [connection signal="timeout" from="MidPath/PathTimer" to="MidPath" method="_on_path_timer_timeout"]
