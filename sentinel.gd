@@ -3,10 +3,13 @@ extends Node3D
 @onready var timer: Timer = $Timer
 @onready var attack_area: Area3D = $AttackArea
 @onready var collision_shape_3d: CollisionShape3D = $AttackArea/CollisionShape3D
+@onready var muzzle_position: Marker3D = $MuzzlePosition
 
 @export var damage := 10
 @export var fire_rate := 12.0
 @export var radius := 10.0
+@export var muzzle_scene: PackedScene
+
 
 var enemies_in_range := []
 var target = null
@@ -29,6 +32,9 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> void:
+	var muzzle = muzzle_scene.instantiate() as Node3D
+	get_parent().add_child(muzzle)
+	muzzle.global_transform = muzzle_position.global_transform 
 	target.take_damage(damage)
 
 

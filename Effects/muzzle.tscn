@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck3b62uwq0tpg"]
+
+[ext_resource type="Script" path="res://Effects/muzzle.gd" id="1_ns65a"]
+
+[sub_resource type="Curve" id="Curve_p01sn"]
+max_value = 3.0
+_data = [Vector2(0.0362319, 1.05495), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s2sp8"]
+curve = SubResource("Curve_p01sn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yrg1t"]
+lifetime_randomness = 1.0
+direction = Vector3(0, 0, -1)
+spread = 30.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 0.999998
+scale_min = 0.1
+scale_over_velocity_curve = SubResource("CurveTexture_s2sp8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8rop"]
+albedo_color = Color(0.736479, 0.728836, 0, 1)
+emission_enabled = true
+emission = Color(0.641632, 0.694761, 0.437846, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wayhx"]
+material = SubResource("StandardMaterial3D_v8rop")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Muzzle" type="Node3D"]
+script = ExtResource("1_ns65a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137657, 1.42593, -1.28826)
+light_color = Color(0.890196, 0.690196, 0.576471, 1)
+shadow_enabled = true
+omni_range = 0.674342
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yrg1t")
+draw_pass_1 = SubResource("BoxMesh_wayhx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

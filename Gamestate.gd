@@ -12,7 +12,7 @@ var available_player_perks := {
 
 var available_enemy_perks := {
 			"Health": [0, "Enemies now have additional 20% health"],
-			"Faster": [100, "Enemies are now 10% faster"]
+			"Faster": [0, "Enemies are now 10% faster"]
 		}
 
 var player_perks = available_player_perks.duplicate()

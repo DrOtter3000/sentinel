@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmv8mxkywwq7g"]
+[gd_scene load_steps=4 format=3 uid="uid://cmv8mxkywwq7g"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_script.gd" id="1_5wy2a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjli7"]
-albedo_color = Color(0.921745, 0.0776784, 0.389317, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_kkwi7"]
-material = SubResource("StandardMaterial3D_qjli7")
-radius = 0.3
+[ext_resource type="PackedScene" uid="uid://lkfjfwbqc5j3" path="res://Enemies/Zombie.fbx" id="2_863pa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1m60m"]
 radius = 0.3
@@ -19,9 +13,33 @@ loop = false
 script = ExtResource("1_5wy2a")
 type = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 6.86668e-11, 0, -2.5193e-10, 1, 1.09139e-11, -7.45058e-09, 1.09139e-11, 1, -0.0007658, 0.762525, 0.000116348)
-mesh = SubResource("CapsuleMesh_kkwi7")
+[node name="Zombie" parent="." instance=ExtResource("2_863pa")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Zombie" index="0"]
+bones/2/position = Vector3(0, 0.142703, 3.6049e-11)
+bones/3/position = Vector3(0, 0.16309, -2.10433e-11)
+bones/8/position = Vector3(-5.34062e-12, 0.161482, -1.35957e-10)
+bones/9/position = Vector3(2.19018e-12, 0.230473, 6.56315e-11)
+bones/10/position = Vector3(6.56222e-12, 0.353565, -2.31952e-11)
+bones/11/position = Vector3(-3.44151e-12, 0.217066, 1.06412e-10)
+bones/12/position = Vector3(-2.73704e-11, 0.0222688, -2.36112e-10)
+bones/12/rotation = Quaternion(-1.38236e-17, 1.73472e-18, 0, 1)
+bones/13/rotation = Quaternion(-1.10968e-16, -3.46945e-18, 1.73472e-18, 1)
+bones/16/position = Vector3(-4.84546e-13, 0.161482, -1.36069e-10)
+bones/17/position = Vector3(-1.76878e-12, 0.230476, 4.7736e-11)
+bones/18/position = Vector3(1.99592e-11, 0.353566, -1.20934e-11)
+bones/19/position = Vector3(-1.31099e-11, 0.223381, 8.97549e-11)
+bones/20/position = Vector3(-2.37935e-11, 0.0215171, 1.54767e-10)
+bones/20/rotation = Quaternion(1.37152e-17, 4.33681e-19, 0, 1)
+bones/21/rotation = Quaternion(-1.52886e-16, -4.33681e-19, -1.73472e-18, 1)
+bones/24/position = Vector3(-1.13684e-12, 0.401566, -5.59721e-11)
+bones/29/position = Vector3(3.3612e-13, 0.401588, -1.69949e-10)
+bones/30/position = Vector3(-6.58089e-11, 0.287209, -7.38762e-12)
+bones/31/position = Vector3(2.39928e-09, 0.193942, 1.97383e-09)
+
+[node name="AnimationPlayer" parent="Zombie" index="1"]
+autoplay = "mixamo_com"
 
 [node name="EnemyBody" type="StaticBody3D" parent="."]
 collision_layer = 2
@@ -30,3 +48,5 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762142, 0)
 shape = SubResource("CapsuleShape3D_1m60m")
+
+[editable path="Zombie"]
