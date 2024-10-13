@@ -13,7 +13,10 @@ Use powerful spells and strategically place archers along the enemies' path to s
 
 ## Controls
 
-_Controls section to be added here._
+Space - switch mode
+LMB - select/cast spell
+RMB - deselect
+Alt + F4 - quit game
 
 ## Installation
 
@@ -48,8 +51,4 @@ Your support and feedback are invaluable and help improve **Sentinel** continuou
 
 ## License
 
-**Sentinel** is Open Source and released under the **GPL license**. For more details, see the [LICENSE file](LICENSE).
-
----
-
-This is the English version. If you'd like to adjust anything else, feel free to let me know!
+**Sentinel** is Open Source and released under the **GPL license**.

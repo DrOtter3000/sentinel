@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bc5nenypwbb5a"]
+[gd_scene load_steps=34 format=4 uid="uid://bc5nenypwbb5a"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_6k3mw"]
 [ext_resource type="PackedScene" uid="uid://cb70frb4cyw5j" path="res://player.tscn" id="1_qyam3"]
@@ -35,6 +35,7 @@ sky = SubResource("Sky_btcko")
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.025
 volumetric_fog_albedo = Color(0.131446, 0.185378, 0.337295, 1)
+volumetric_fog_length = 128.0
 volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mth02"]
@@ -96,9 +97,6 @@ _data = {
 }
 point_count = 12
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teudc"]
-albedo_color = Color(0.180825, 0.11478, 0.0215911, 1)
-
 [sub_resource type="Curve3D" id="Curve3D_sqkpr"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.11663, 0, -24.0186, -0.257488, -0.000653625, -0.453297, 0.257488, 0.000653625, 0.453297, -5.05658, -0.0106235, -20.7647, -0.15416, 0.0199509, -0.282279, 0.15416, -0.0199509, 0.282279, -4.97143, 0, -8.2048, -0.65155, -0.000559807, -0.585359, 0.65155, 0.000559807, 0.585359, 2.88206, 0, -7.7774, 0.64553, -0.000824928, -0.786734, -0.64553, 0.000824928, 0.786734, 2.93549, 0, 1.3583, 0.906648, 6.67572e-05, 0.462246, -0.906648, -6.67572e-05, -0.462246, -1.13408, 1.57356e-05, 1.8058, 0.966421, -0.000377178, 0.627349, -0.966421, 0.000377178, -0.627349, -1.44537, 0, -3.71709, 0.75185, 0.000685215, -0.737416, -0.75185, -0.000685215, 0.737416, -5.1317, 0, -3.82394, -1.16647, 0.0178838, -0.599523, 1.16647, -0.0178838, 0.599523, -4.64389, 0, 5.9968, -1.05134, 0.0182014, -0.784879, 1.05134, -0.0182014, 0.784879, -1.22469, 0, 6.2105, 0, 0, 0, 0, 0, 0, -3.30827, 0, 24.1614),
@@ -138,7 +136,7 @@ environment = SubResource("Environment_q0v6w")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_color = Color(0.288102, 0.385018, 0.611861, 1)
-light_energy = 2.0
+light_energy = 2.5
 shadow_enabled = true
 
 [node name="Area" type="Node3D" parent="."]
@@ -174,21 +172,6 @@ curve = SubResource("Curve3D_l4wr2")
 script = ExtResource("3_d50po")
 zombie_scene = ExtResource("2_j70pt")
 
-[node name="Road" type="CSGPolygon3D" parent="LeftPath"]
-transform = Transform3D(1, 3.01551e-10, -4.36557e-11, 3.00421e-10, 1, -4.36557e-11, -4.36557e-11, 0, 1, -4.57891e-05, -0.890634, 6.02402e-06)
-polygon = PackedVector2Array(-1, 0, -1, 0.15, 0.5, 0.15, 0.5, 0)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 0.25
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("StandardMaterial3D_teudc")
-
 [node name="PathTimer" type="Timer" parent="LeftPath"]
 wait_time = 2.0
 one_shot = true
@@ -199,21 +182,6 @@ curve = SubResource("Curve3D_sqkpr")
 script = ExtResource("3_d50po")
 zombie_scene = ExtResource("2_j70pt")
 
-[node name="Road" type="CSGPolygon3D" parent="MidPath"]
-transform = Transform3D(1, 3.01551e-10, -4.36557e-11, 3.00421e-10, 1, -4.36557e-11, -4.36557e-11, 0, 1, -4.57891e-05, -0.890634, 6.02402e-06)
-polygon = PackedVector2Array(-1, 0, -1, 0.15, 0.5, 0.15, 0.5, 0)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 0.25
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("StandardMaterial3D_teudc")
-
 [node name="PathTimer" type="Timer" parent="MidPath"]
 wait_time = 2.0
 
@@ -222,21 +190,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
 curve = SubResource("Curve3D_posxc")
 script = ExtResource("3_d50po")
 zombie_scene = ExtResource("2_j70pt")
-
-[node name="Road" type="CSGPolygon3D" parent="RightPath"]
-transform = Transform3D(1, 3.01551e-10, -4.36557e-11, 3.00421e-10, 1, -4.36557e-11, -4.36557e-11, 0, 1, -4.57891e-05, -0.890634, 6.02402e-06)
-polygon = PackedVector2Array(-1, 0, -1, 0.15, 0.5, 0.15, 0.5, 0)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 0.25
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("StandardMaterial3D_teudc")
 
 [node name="PathTimer" type="Timer" parent="RightPath"]
 wait_time = 2.0

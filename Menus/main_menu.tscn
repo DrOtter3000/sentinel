@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4x07608wak4q"]
+[gd_scene load_steps=3 format=3 uid="uid://b4x07608wak4q"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_gdbc5"]
+[ext_resource type="Texture2D" uid="uid://dt8a0tvr5fc6h" path="res://Pictures/backgroundchapel.png" id="2_8fcgp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +12,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gdbc5")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8fcgp")
+
+[node name="MenuContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,45 +29,131 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LblTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="LblTitle" type="Label" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 text = "Sentinel"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="BtnStart" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnStart" type="Button" parent="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Play Game"
 
-[node name="BtnHowToPlay" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnHowToPlay" type="Button" parent="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-disabled = true
 text = "How To Play"
 
-[node name="BtnCredits" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnCredits" type="Button" parent="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-disabled = true
 text = "Credits"
 
-[node name="BtnQuit" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BtnQuit" type="Button" parent="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Quit"
+
+[node name="HowToPlay" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HowToPlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlay/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LblText" type="Label" parent="HowToPlay/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "LMB = cast fireball
+SPACE = switch mode
+ALT + F4 = quit"
+
+[node name="BtnBack" type="Button" parent="HowToPlay/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="LblCredits" type="Label" parent="Credits/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="LblText" type="Label" parent="Credits/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Idea: 
+DrOtter3000
+
+Graphics:
+DrOtter3000
+
+\"Programming\":
+DrOtter3000
+
+Sounds:
+J8054
+IENBA
+Dark Fantasy Studios
+
+Catering:
+DrOtter3000
+
+Special Thanks:
+Godot Game Engine
+Blender
+Linux Deutschland Community"
+
+[node name="BtnBack" type="Button" parent="Credits/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
 
 [node name="LblVersion" type="Label" parent="."]
 layout_mode = 1
@@ -70,9 +166,11 @@ offset_left = -40.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Version: 0.0.0"
+text = "Version: 0.1.0"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnStart" to="." method="_on_btn_start_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnHowToPlay" to="." method="_on_btn_how_to_play_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnCredits" to="." method="_on_btn_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnStart" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnHowToPlay" to="." method="_on_btn_how_to_play_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnCredits" to="." method="_on_btn_credits_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/HBoxContainer/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="HowToPlay/HBoxContainer/VBoxContainer/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="Credits/HBoxContainer/VBoxContainer/BtnBack" to="." method="_on_btn_back_pressed"]

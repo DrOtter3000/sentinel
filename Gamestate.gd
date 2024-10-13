@@ -1,5 +1,7 @@
 extends Node
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var fireball_mana_cost = 3
 var victory = true
 

@@ -85,7 +85,7 @@ func update_kills(type: int) -> void:
 
 func check_for_victory() -> void:
 	if zombies_in_wave == zombies_removed_from_wave:
-		if wave == 2:
+		if wave == 5:
 			await get_tree().create_timer(2.0).timeout
 			get_tree().change_scene_to_file("res://Menus/end_screen.tscn")
 		else:

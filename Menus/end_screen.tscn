@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://f76ia73j2l4p"]
+[gd_scene load_steps=3 format=3 uid="uid://f76ia73j2l4p"]
 
 [ext_resource type="Script" path="res://end_screen.gd" id="1_bsrw5"]
+[ext_resource type="Texture2D" uid="uid://dt8a0tvr5fc6h" path="res://Pictures/backgroundchapel.png" id="2_xhdxu"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bsrw5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xhdxu")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

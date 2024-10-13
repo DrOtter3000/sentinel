@@ -141,10 +141,10 @@ color = Color(0, 0, 0, 0.262745)
 offset_right = 283.0
 offset_bottom = 128.0
 size_flags_horizontal = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/StatusView/MarginContainer"]
 layout_mode = 2
@@ -207,10 +207,10 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="ConstructionContainer" type="VBoxContainer" parent="ConstructionCam/ManagementMenu/MarginContainer"]
 layout_mode = 2
@@ -277,10 +277,10 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CombatCam/CombatMenu/MarginContainer"]
 layout_mode = 2
