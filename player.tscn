@@ -111,10 +111,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="LblPerks" type="Label" parent="PerkLayer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Select A Perk"
 horizontal_alignment = 1
 
