@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var mana_cost := 1.0
+@export var mana_cost := 2.5
 @export var explosion: PackedScene
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 

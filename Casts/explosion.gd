@@ -17,7 +17,7 @@ func _ready() -> void:
 	audio_stream_player_3d.pitch_scale = randf_range(.7, 1.4)
 	audio_stream_player_3d.play()
 	damage = int(base_damage * (1.0 + (Gamestate.player_perks["Fireball Damage"][0] * .25)))
-	max_radius = base_radius * (1.0 + (Gamestate.player_perks["Fireball Radius"][0] * .3))
+	max_radius = base_radius * (1.0 + (Gamestate.player_perks["Fireball Radius"][0] * .5))
 
 func _process(delta: float) -> void:
 	if collision_shape_3d.shape.radius < max_radius:

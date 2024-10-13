@@ -56,6 +56,16 @@ func start_wave() -> void:
 		left_path.start_new_wave(10)
 		mid_path.start_new_wave(10)
 		right_path.start_new_wave(10)
+	elif wave == 4:
+		zombies_in_wave = 50
+		left_path.start_new_wave(20)
+		mid_path.start_new_wave(10)
+		right_path.start_new_wave(20)
+	elif wave == 5:
+		zombies_in_wave = 100
+		left_path.start_new_wave(30)
+		mid_path.start_new_wave(40)
+		right_path.start_new_wave(30)
 	else:
 		pass
 
@@ -75,8 +85,12 @@ func update_kills(type: int) -> void:
 
 func check_for_victory() -> void:
 	if zombies_in_wave == zombies_removed_from_wave:
-		await get_tree().create_timer(1.0).timeout
-		get_tree().get_first_node_in_group("Player").offer_perks()
+		if wave == 2:
+			await get_tree().create_timer(2.0).timeout
+			get_tree().change_scene_to_file("res://Menus/end_screen.tscn")
+		else:
+			await get_tree().create_timer(2.0).timeout
+			get_tree().get_first_node_in_group("Player").offer_perks()
 
 
 func check_for_game_over() -> void:

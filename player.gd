@@ -26,7 +26,7 @@ extends Node3D
 @onready var lbl_interest: Label = $Camera3D/StatusView/MarginContainer/VBoxContainer/MoneyContainer/VBoxContainer/LblInterest
 
 @export var money := 100
-@export var price_per_sentinel := 12
+@export var price_per_sentinel := 30
 @export var base_mana := 10.0
 @export var mana_regen := 1.0
 @export var mouse_sensetivity := .15
