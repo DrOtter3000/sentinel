@@ -25,6 +25,7 @@ theme_override_constants/separation = 15
 
 [node name="LblStatus" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 45
 text = "Victory!"
 horizontal_alignment = 1
 

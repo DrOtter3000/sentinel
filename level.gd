@@ -75,6 +75,7 @@ func update_kills(type: int) -> void:
 
 func check_for_victory() -> void:
 	if zombies_in_wave == zombies_removed_from_wave:
+		await get_tree().create_timer(1.0).timeout
 		get_tree().get_first_node_in_group("Player").offer_perks()
 
 
