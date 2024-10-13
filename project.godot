@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/custom="res://Themes/theme.tres"
+
 [input]
 
 LMB={

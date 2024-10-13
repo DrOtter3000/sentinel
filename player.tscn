@@ -146,6 +146,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/StatusView/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="HealthContainer" type="HBoxContainer" parent="Camera3D/StatusView/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -175,7 +176,7 @@ layout_mode = 2
 
 [node name="ManaContainer" type="VBoxContainer" parent="Camera3D/StatusView/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = -5
+theme_override_constants/separation = 0
 
 [node name="ManaBar" type="ProgressBar" parent="Camera3D/StatusView/MarginContainer/VBoxContainer/ManaContainer"]
 custom_minimum_size = Vector2(0, 10)
